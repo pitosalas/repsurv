@@ -1,5 +1,6 @@
 Rstest::Application.routes.draw do
 
+  root to: 'programs#index'
   resources :programs do
     resources :participants
     resources :questions
