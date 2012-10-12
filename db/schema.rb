@@ -11,33 +11,40 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121011152016) do
+ActiveRecord::Schema.define(:version => 20121011224210) do
 
   create_table "participants", :force => true do |t|
     t.string   "name"
+    t.integer  "program_id"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   create_table "programs", :force => true do |t|
     t.string   "name"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.string   "description"
+    t.boolean  "open"
+    t.boolean  "locked"
+    t.datetime "created_at",  :null => false
+    t.datetime "updated_at",  :null => false
   end
 
   create_table "questions", :force => true do |t|
-    t.text     "body"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "reports", :force => true do |t|
-    t.string   "name"
+    t.string   "text"
+    t.integer  "order"
+    t.integer  "program_id"
+    t.text     "active"
+    t.text     "data_type"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
 
   create_table "rounds", :force => true do |t|
+    t.integer  "program_id"
+    t.integer  "number"
+    t.integer  "start"
+    t.integer  "fin"
+    t.text     "status"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -50,6 +57,15 @@ ActiveRecord::Schema.define(:version => 20121011152016) do
     t.string   "blurb"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
+  end
+
+  create_table "values", :force => true do |t|
+    t.string   "value"
+    t.integer  "round_id"
+    t.integer  "respondent_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.integer  "question_id"
   end
 
 end

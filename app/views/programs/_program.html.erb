@@ -1,0 +1,7 @@
+<li>
+  <%= program.name %> |
+  <%= program.description %> |
+  <%= program.open %> |
+  <%= program.locked %> |
+  <%= link_to "delete", program, method: :delete, data: { confirm: "Are you sure?" } %>
+</li>

@@ -1,8 +1,11 @@
 class CreateQuestions < ActiveRecord::Migration
   def change
     create_table :questions do |t|
-      t.text :body
-
+      t.string   "text"
+      t.integer  "order"
+      t.integer  "program_id"
+      t.text     "active"
+      t.text     "data_type"
       t.timestamps
     end
   end

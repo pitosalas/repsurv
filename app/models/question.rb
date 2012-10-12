@@ -1,3 +1,3 @@
 class Question < ActiveRecord::Base
-  attr_accessible :body
+  attr_accessible :text, :order, :data_type, :active
 end
