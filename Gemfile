@@ -11,9 +11,9 @@ gem 'jquery-rails'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'sqlite3'
 
 group :development, :test do
+  gem 'sqlite3'
   gem 'hirb'
   gem 'pry'
   gem 'pry-doc'
@@ -38,5 +38,5 @@ group :test do
 end
 
 group :production do
-  gem 'pg', '0.12.2'
+  gem 'pg'
 end

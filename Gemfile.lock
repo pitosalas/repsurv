@@ -180,7 +180,7 @@ DEPENDENCIES
   coffee-rails (~> 3.2.1)
   hirb
   jquery-rails
-  pg (= 0.12.2)
+  pg
   pry
   pry-doc
   pry-nav
