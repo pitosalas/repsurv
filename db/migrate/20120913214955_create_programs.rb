@@ -5,6 +5,7 @@ class CreatePrograms < ActiveRecord::Migration
       t.string :description
       t.boolean :open
       t.boolean :locked
+      t.boolean :suppress_hidden_participants, default: false
       t.timestamps
     end
   end

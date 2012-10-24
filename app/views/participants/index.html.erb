@@ -1,7 +1,11 @@
-<ol>
-  <li>Participant</li>
-  <li>Participant</li>
-  <li>Participant</li>
-  <li>Participant</li>
-  <li>Participant</li>
-</ol>  
+<p>
+  Participants in this program. You will get a far better result if you start off with
+  all the participants installed before you open the program. However it is also possible
+  to add particiapant during the program.
+</p>
+<%= will_paginate %>
+<ul>
+  <%= render @participants %>
+</ul>
+<%= will_paginate %>
+<%= link_to "Create a new Participant", new_program_participant_path %>

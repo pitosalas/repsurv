@@ -1,7 +1,22 @@
-<ol>
-  <li>question</li>
-  <li>question</li>
-  <li>question</li>
-  <li>question</li>
-  <li>question</li>
-</ol>  
+
+<div class="row">
+  <div class="span8">
+    <p>
+      Questions that you want to ask all the participants. Think of questions as a general concept
+      that you would like to teach in this program. For example, "addition", or "REST APIs". All the participants will get a chance to self-assess their knowledge of the concept on a fixed
+      scale.
+    </p>
+    <p>
+      You will get a far better result if you start off with all the questions defined before you open the program. However it is also possible to add questions if you forget some at the start.
+      You cannot delete a question once the program is open. The ordering of the questions is based on the 'pos' value.
+    </p>
+  </div>
+  <div class="span8">
+    <%= will_paginate %>
+    <ul>
+      <%= render @questions %>
+    </ul>
+    <%= will_paginate %>
+    <%= link_to "Create a new Question", new_program_question_path %>
+  </div>
+</div>

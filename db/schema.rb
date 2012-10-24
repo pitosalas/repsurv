@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(:version => 20121011224210) do
   create_table "participants", :force => true do |t|
     t.string   "name"
     t.integer  "program_id"
+    t.boolean  "hidden"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -25,8 +26,9 @@ ActiveRecord::Schema.define(:version => 20121011224210) do
     t.string   "description"
     t.boolean  "open"
     t.boolean  "locked"
-    t.datetime "created_at",  :null => false
-    t.datetime "updated_at",  :null => false
+    t.boolean  "suppress_hidden_participants", :default => false
+    t.datetime "created_at",                                      :null => false
+    t.datetime "updated_at",                                      :null => false
   end
 
   create_table "questions", :force => true do |t|

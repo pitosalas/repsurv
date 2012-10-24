@@ -34,18 +34,18 @@ end
 if true
   prog = Program.first
 
-  prog.participants.create(:name => "Unknown")
-  prog.participants.create(:name => "Rachel")
-  prog.participants.create(:name => "Jeremy Coffman")
-  prog.participants.create(:name => "Sam")
-  prog.participants.create(:name => "Eitan")
-  prog.participants.create(:name => "Kendall")
-  prog.participants.create(:name => "Avishek Neupane")
-  prog.participants.create(:name => "Mustapha Isa")
-  prog.participants.create(:name => "Shu Lin")
-  prog.participants.create(:name => "Fatima")
-  prog.participants.create(:name => "Ezra")
-  prog.participants.create(:name => "Tom")
+  prog.participants.create(name: "Unknown", hidden: true)
+  prog.participants.create(name: "Rachel", hidden: false)
+  prog.participants.create(name: "Jeremy Coffman", hidden: false)
+  prog.participants.create(name: "Sam", hidden: false)
+  prog.participants.create(name: "Eitan", hidden: false)
+  prog.participants.create(name: "Kendall", hidden: false)
+  prog.participants.create(name: "Avishek Neupane", hidden: false)
+  prog.participants.create(name: "Mustapha Isa", hidden: false)
+  prog.participants.create(name: "Shu Lin", hidden: false)
+  prog.participants.create(name: "Fatima", hidden: false)
+  prog.participants.create(name: "Ezra", hidden: false)
+  prog.participants.create(name: "Tom", hidden: false)
   puts "Added Unknown + 11 Students from JBS 2012"
 end
 

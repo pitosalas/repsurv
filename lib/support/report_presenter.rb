@@ -85,7 +85,7 @@ class ReportPresenter
     elsif code == "r"
       [Round.order('number'), "Rounds"]
     elsif code == "p"
-      [Participant.order('name'), "Participants"]
+      [Participant.where(hidden: false).order('name'), "Participants"]
     else
       raise PresenterError.new("invalid code in code_to_class: #{code}")
     end

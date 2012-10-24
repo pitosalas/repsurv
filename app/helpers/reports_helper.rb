@@ -19,6 +19,7 @@ module ReportsHelper
 
 # html generators for different formatted cells.
 # data = array of Fixnums
+
   def spark_pie(data)
     content_tag(:span, class: "sparkpie") do
       data.join(",")

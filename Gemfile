@@ -4,6 +4,7 @@ gem 'rails'
 gem 'twitter-bootstrap-rails', :github => 'seyhunak/twitter-bootstrap-rails'
 gem 'american_date'
 gem 'will_paginate'
+gem 'bootstrap-will_paginate'
 gem 'jquery-rails'
 
 

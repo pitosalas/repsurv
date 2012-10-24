@@ -1,0 +1,5 @@
+<li>
+  <%= link_to participant.name, program_participant_path(@program_id, participant) %> |
+  <%= participant.hidden %> |
+  <%= link_to "delete", program_participant_path(@program_id, participant), method: :delete, data: { confirm: "Are you sure?" } %>
+</li>
