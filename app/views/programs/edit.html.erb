@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="span6 offset3">
+    <%= form_for(@program_id) do |f| %> 
+      <%= render 'shared/error_messages' %>
+      <%= f.label :name %> <%= f.text_field :name %> <br/>
+      <%= f.label :description %> <%= f.text_field :description %> <br/>
+      <%= f.label :open %> <%= f.check_box :open %> <br/>
+      <%= f.label :locked %> <%= f.check_box :locked %> <br/>
+      <%= f.submit "Save", class: "btn btn-large btn-primary" %> 
+    <% end %>
+  </div>
+</div>

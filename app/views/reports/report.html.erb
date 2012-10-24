@@ -1,13 +1,31 @@
 <h2>Report</h2>
   <p>
-    Program Id: <%= @program_id %>
+    <%= @presenter.report_description %>
   </p>
-  <p>
-    Question Code: <%= @quest_code %>
-  </p>
-  <p>
-    Participant Code: <%= @part_code %>
-  </p>
-  <p>
-    Round Code: <%= @round_code %>
-  </p>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th></th>
+      <% @presenter.headers.each do |hdr| %>
+        <th><%= hdr %></th>
+      <% end %>
+    </tr>
+  </thead>
+  <tbody>
+    <% @presenter.rows.each do |row_instance| %>
+      <tr>
+        <td><%= @presenter.row_label(row_instance) %></td>
+        <% @presenter.cols.each do |col_instance| %>
+          <td>
+            <ul>
+              <li><%= @presenter.cell_raw_values(row_instance, col_instance).join(",") %></li>
+              <li><%= @presenter.cell_pie_buckets(row_instance, col_instance).join(",") %></li>
+            </ul>
+            <%= spark_pie(@presenter.cell_pie_buckets(row_instance, col_instance)) %>
+          </td>
+        <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

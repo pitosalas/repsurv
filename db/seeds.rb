@@ -1,7 +1,7 @@
 require_relative "./metricalc/metricalc.rb"
 surv = SurveyData.new
 inp = InputData.new
-inp.read "lib/metricalc/data/week9file.csv", surv
+inp.read "../metricalc/data/week9file.csv", surv
 surv.process
 round_range = []
 
@@ -17,7 +17,7 @@ if true
   prog = Program.first
   surv.n_questions.times do |x|
     puts "Adding question #{surv.question(x-1).text} [#{surv.question(x-1).index}]"
-    prog.questions.create(text: surv.question(x-1).text, order: surv.question(x-1).index)
+    prog.questions.create(text: surv.question(x-1).text, pos: surv.question(x-1).index)
   end
 end
 
@@ -57,7 +57,8 @@ if true
       ((rnd.start)..(rnd.fin)).each do 
         |resp_row|
         Value.create do |v|
-          cell = surv.cell(qst.order, resp_row)
+          v.program = prog
+          cell = surv.cell(qst.pos, resp_row)
           who = surv.cell(30, resp_row)
           if (resp = Participant.find(:first, :conditions => ["name LIKE ?", who]))
             v.participant = resp

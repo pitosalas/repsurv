@@ -4,4 +4,5 @@ class Program < ActiveRecord::Base
   has_many :questions
   has_many :settings
   has_many :rounds
+  has_many :values
 end

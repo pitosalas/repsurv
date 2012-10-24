@@ -15,7 +15,6 @@ class ProgramsController < ApplicationController
   def destroy
     Program.find(params[:id]).destroy
     flash[:success] = "Program has been deleted."
-    puts "xxxxxxxxxxx"
     redirect_to programs_path
   end
 
@@ -29,6 +28,25 @@ class ProgramsController < ApplicationController
       redirect_to @program
     else
       render :new
+    end
+  end
+
+  def edit
+    @program_id = Program.find(params[:id])
+    respond_with @program_id do |format|
+      format.html {
+        render layout: 'layouts/progtabs'
+      }
+    end
+  end
+
+  def update
+    @program = Program.find(params[:id])
+    if @program.update_attributes(params[:program])
+      flash[:success] = "Program Updated!"
+      redirect_to :back
+    else
+      render 'edit'
     end
   end
 

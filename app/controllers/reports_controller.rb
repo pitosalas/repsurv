@@ -2,9 +2,14 @@ class ReportsController < ApplicationController
   respond_to :html
 
   def report
-    @part_code = params[:part]
-    @quest_code = params[:quest]
-    @round_code = params[:round]
+    puts "******** #{params}"
+    @presenter = ReportPresenter.new(
+                    program: params[:id], 
+                    rows: params[:rows],
+                    cols: params[:cols],
+                    cell: params[:cell],
+                    page: params[:page])
+
     @program_id = params[:id]
     respond_with @reports do |format|
       format.html {

@@ -4,7 +4,6 @@ Rstest::Application.routes.draw do
   resources :programs do
     resources :participants
     resources :questions
-    resources :settings
     resources :rounds
     member do 
       get 'report' => 'reports#report'

@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(:version => 20121011224210) do
 
   create_table "questions", :force => true do |t|
     t.string   "text"
-    t.integer  "order"
+    t.integer  "pos"
     t.integer  "program_id"
     t.text     "active"
     t.text     "data_type"
@@ -49,23 +49,14 @@ ActiveRecord::Schema.define(:version => 20121011224210) do
     t.datetime "updated_at", :null => false
   end
 
-  create_table "settings", :force => true do |t|
-    t.string   "name"
-    t.integer  "program_id"
-    t.boolean  "visible"
-    t.string   "datatype"
-    t.string   "blurb"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
   create_table "values", :force => true do |t|
     t.string   "value"
     t.integer  "round_id"
-    t.integer  "respondent_id"
-    t.datetime "created_at",    :null => false
-    t.datetime "updated_at",    :null => false
+    t.integer  "participant_id"
     t.integer  "question_id"
+    t.integer  "program_id"
+    t.datetime "created_at",     :null => false
+    t.datetime "updated_at",     :null => false
   end
 
 end
