@@ -1,7 +1,7 @@
 <li>
-  <%= link_to question.text, program_question_path(@program_id, question) %> |
+  <%= link_to question.text, edit_program_question_path(@program, question) %> |
   <%= question.pos %> |
   <%= question.active %> |
-  <%= question.active %> |
-  <%= link_to "delete", program_question_path(@program_id, question), method: :delete, data: { confirm: "Are you sure?" } %>
+  <%= question.data_type %> |
+  <%= link_to "delete", program_question_path(@program, question), method: :delete, data: { confirm: "Are you sure?" } %>
 </li>

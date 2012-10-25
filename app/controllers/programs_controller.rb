@@ -32,8 +32,8 @@ class ProgramsController < ApplicationController
   end
 
   def edit
-    @program_id = Program.find(params[:id])
-    respond_with @program_id do |format|
+    @program = Program.find(params[:id])
+    respond_with @program do |format|
       format.html {
         render layout: 'layouts/progtabs'
       }

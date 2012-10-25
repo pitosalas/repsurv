@@ -1,11 +1,20 @@
-<p>
-  Participants in this program. You will get a far better result if you start off with
-  all the participants installed before you open the program. However it is also possible
-  to add particiapant during the program.
-</p>
-<%= will_paginate %>
-<ul>
-  <%= render @participants %>
-</ul>
-<%= will_paginate %>
-<%= link_to "Create a new Participant", new_program_participant_path %>
+
+<div class="row">
+  <div class="span8">
+    <p>
+      Participants are the peope you are surveying. The students, attendees, patients, whatever. Each program has a separate collection of participants. Participants must at least signify their email addresses so we can send them messages.
+    </p>
+    <p>
+      You will get a far better result if you start off with all the participants enrolled before you open the program. However it is also possible to add participants if you forget some at the start.
+      You cannot delete a participants once the program is open. The ordering of the participants is alphabetical.
+    </p>
+  </div>
+  <div class="span8">
+  <%= will_paginate %>
+  <ul>
+    <%= render @participants %>
+  </ul>
+  <%= will_paginate %>
+  <%= link_to "Create a new Participant", new_program_participant_path %>
+</div>
+

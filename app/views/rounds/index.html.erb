@@ -1,7 +1,19 @@
-<ol>
-  <li>Round</li>
-  <li>Round</li>
-  <li>Round</li>
-  <li>Round</li>
-  <li>Round</li>
-</ol>
+
+<div class="row">
+  <div class="span8">
+    <p>
+      Every so often we will send the same set of questions to your participants. Each set of responses is known as a "round" - a round of questionaires and responses. Initially you have to create each round by hand. 
+    </p>
+    <p>
+      There can only be one round open at a time, and this is enforced. In the future you will be able to state a general rule, for example, once a week, and the product will automatically send out the questions to the participants.
+    </p>
+  </div>
+  <div class="span8">
+    <%= will_paginate %>
+    <ul>
+      <%= render @rounds %>
+    </ul>
+    <%= will_paginate %>
+    <%= link_to "Create a new Round", new_program_round_path %>
+  </div>
+</div>

@@ -1,0 +1,7 @@
+<li>
+  <%= link_to round.text, edit_program_round_path(@program, round) %> |
+  <%= round.pos %> |
+  <%= round.active %> |
+  <%= round.data_type %> |
+  <%= link_to "delete", program_round_path(@program, round), method: :delete, data: { confirm: "Are you sure?" } %>
+</li>

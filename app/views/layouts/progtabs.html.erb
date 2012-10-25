@@ -1,11 +1,11 @@
 <% content_for :content do %>
   <div class="container">
     <ul class="nav nav-tabs">
-      <li><%= link_to "Reports", report1_path(@program_id) %></li>
-      <li><%= link_to "Settings", edit_program_path(@program_id) %></li>
-      <li><%= link_to "Rounds", program_rounds_path(@program_id) %></li>
-      <li><%= link_to "Participants", program_participants_path(@program_id) %></li>
-      <li><%= link_to "Questions", program_questions_path(@program_id) %></li>
+      <li><%= link_to "Reports", report1_path(@program) %></li>
+      <li><%= link_to "Settings", edit_program_path(@program) %></li>
+      <li><%= link_to "Rounds", program_rounds_path(@program) %></li>
+      <li><%= link_to "Participants", program_participants_path(@program) %></li>
+      <li><%= link_to "Questions", program_questions_path(@program) %></li>
     </ul>
 
   <%= content_for?(:progtabs_content) ? yield(:progtabs_content) : yield %>
