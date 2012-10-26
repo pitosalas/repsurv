@@ -1,4 +1,4 @@
-#require 'CSV'
+require 'CSV'
 class InputData
 
   def read(file, surv)
