@@ -38,6 +38,5 @@ group :test do
 end
 
 group :production do
-  gem 'fastercsv'
   gem 'pg'
 end
