@@ -1,23 +1,18 @@
 source 'https://rubygems.org'
 
 gem 'rails'
-gem 'twitter-bootstrap-rails', :github => 'seyhunak/twitter-bootstrap-rails'
 gem 'american_date'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'jquery-rails'
-
-
-# Bundle edge Rails instead:
-# gem 'rails', :git => 'git://github.com/rails/rails.git'
-
+gem "therubyracer"
+gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+gem "twitter-bootstrap-rails"
 
 group :development, :test do
   gem 'sqlite3'
   gem 'hirb'
   gem 'pry'
-  gem 'pry-doc'
-  gem 'pry-nav'
   gem 'pry-rails'
 end
 
@@ -30,7 +25,7 @@ group :assets do
 end
 
 group :development, :test do
-    gem 'rspec-rails', '2.9.0'
+    gem 'rspec-rails'
 end
 
 group :test do

@@ -1,0 +1,7 @@
+<% 1.upto(3) do |n| %>
+question_1<%= n%>:
+  text: Brillian Question <%= n%>
+  pos: <%= n%> 
+  id: <%= n%>
+  program_id: 1
+<% end %>

@@ -1,0 +1,13 @@
+<% 1.upto(4) do |r| %>
+  <% 1.upto(3) do |q| %>
+    <% 1.upto(2) do |p| %>
+
+value_r<%= r%>_q<%= q%>_p<%= p%>:
+  program_id: 1
+  value: <%= p == 0 ? r : q %>
+  round_id: <%= r %>
+  participant_id: <%= p %>
+  question_id: <%= q %>
+    <% end %>
+  <% end %>
+<% end %>
