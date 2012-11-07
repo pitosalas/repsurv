@@ -7,22 +7,22 @@
   <thead>
     <tr>
       <th></th>
-      <% @presenter.headers.each do |hdr| %>
+      <% @presenter.column_headers.each do |hdr| %>
         <th><%= hdr %></th>
       <% end %>
     </tr>
   </thead>
   <tbody>
-    <% @presenter.rows.each do |row_instance| %>
+    <% @presenter.row_count.times do |row| %>
       <tr>
-        <td><%= @presenter.row_label(row_instance) %></td>
-        <% @presenter.cols.each do |col_instance| %>
+        <td><%= @presenter.row_label(row) %></td>
+        <% @presenter.col_count.times do |col| %>
           <td>
             <ul>
-              <li><%= @presenter.cell_raw_values(row_instance, col_instance).join(",") %></li>
-              <li><%= @presenter.cell_pie_buckets(row_instance, col_instance).join(",") %></li>
+              <li><%= @presenter.cell_values(row, col).join(",") %></li>
+              <li><%= @presenter.cell_pie_buckets(row, col).join(",") %></li>
             </ul>
-            <%= spark_pie(@presenter.cell_pie_buckets(row_instance, col_instance)) %>
+            <%= spark_pie(@presenter.cell_pie_buckets(row, col)) %>
           </td>
         <% end %>
       </tr>

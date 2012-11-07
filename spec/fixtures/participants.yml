@@ -1,6 +1,7 @@
 <% 1.upto(2) do |n| %>
 part_1<%= n%>:
-  name: part<%= n%> 
+  name: Person <%= n%> 
   id: <%= n%>
   program_id: 1
+  hidden: false
 <% end %>

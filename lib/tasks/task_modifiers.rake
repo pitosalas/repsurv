@@ -4,9 +4,15 @@ namespace :db do
       Rake::Task["db:seed"].invoke
     end
   end
+end
 
-  namespace :fixtures do
-    ENV["FIXTURES_PATH"] = "spec/fixtures"
-    ENV["RAILS_ENV"] ||= 'test'
+namespace :load do
+  namespace :test do
+    task :fixtures => :environment do
+    Rails.env = "test"
+      ENV['FIXTURES_PATH'] = "spec/fixtures"
+      Rake::Task["db:fixtures:load"].invoke
+    end
   end
 end
+

@@ -28,7 +28,18 @@ class ReportPresenter
     bucket_counts = ["0","1","2","3","4"].map do
       |x| buckets[x].nil? ? 0 : buckets[x].length
     end
-    puts "*** vals #{vals}, *** buckets #{buckets}, *** bucket_counts #{bucket_counts}"
     bucket_counts
+  end
+
+  def column_headers
+    @data.column_headers
+  end
+
+  def row_count
+    @data.row_count
+  end
+
+  def col_count
+    @data.col_count
   end
 end

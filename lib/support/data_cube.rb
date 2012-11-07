@@ -15,18 +15,20 @@ class DataCube
   def initialize (coords)
     @coords = coords
     coords.assert_valid_keys(:program, :rows, :cols, :page, :cell)
-    apply_default_params
-    analyze_params
+    apply_default_coords
+    analyze_coords
   end
 
-  def apply_default_params
+  def apply_default_coords
     @coords[:rows] ||= "q"
     @coords[:cols] ||= "r"
     @coords[:cell] ||= "p"
+    @coords[:page] ||= nil
   end
 
-  def analyze_params
-    @prog = Program.find(@coords[:program])
+  def analyze_coords
+    @prog = Program.find_by_id!(@coords[:program])
+    puts "****** #{@coords}, #{@prog}"
     @program_name = @prog.name
     @rows, @rows_english_label = code_to_class(@coords[:rows])
     @cols, @cols_english_label = code_to_class(@coords[:cols])
@@ -52,7 +54,7 @@ class DataCube
   end
 
   def row_label(row_index)
-    @row[row_index].row_label
+    @rows[row_index].row_label
   end
 
   def row_count
