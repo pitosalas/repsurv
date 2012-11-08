@@ -1,6 +1,7 @@
 <% 1.upto(4) do |n| %>
-round_1<%= n%>:
+round_<%= n%>:
   id: <%= n%>
   number: <%= n%>
   program_id: 1
+  open: <%= n == 4 %>
 <% end %>

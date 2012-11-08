@@ -1,12 +1,25 @@
 Rstest::Application.routes.draw do
 
+  #get "surveys/survey"
+
   root to: 'programs#index'
   resources :programs do
-    resources :participants
+    resources :participants do
+      get 'survey' => 'surveys#survey'
+    end
     resources :questions
     resources :rounds
     member do 
       get 'report' => 'reports#report'
+    end
+  end
+  resources :program do
+    resources :participant do
+      resources :question do
+        resources :round do
+          put :value
+        end
+      end
     end
   end
 

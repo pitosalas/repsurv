@@ -1,0 +1,47 @@
+<div class="row">
+  <div class="span8">
+    <p>
+      Please answer the following questions.
+    </p>
+  </div>
+</div>
+<div class="row" %>
+  <div class="span8">
+    <p>
+      Survey for: <%= @participant.name %>
+    </p>
+    <p>
+      Round: <%= @current_round.number %>
+    </p>
+    <p>
+      Status: <%= @current_round.open ? "Open" : "Closed" %>
+    </p>
+  </div>
+</div>
+
+<%= content_tag :table do %>
+  <%= content_tag :thead do %>
+    <% 5.times do |q| %>
+      <%= content_tag :th, "1" %>
+    <% end %>
+  <% end %>
+  <%= content_tag :tbody do %>
+    <%= render partial: 'surveys/value', collection: @values  %>
+  <% end %>
+<% end %>
+
+
+<% if false %>
+  <%= debug @program %>
+  <%= debug @participant %>
+  <%= debug @current_round %>
+  <%= debug @values %>
+  <%= params.inspect %>
+<% end %>
+
+
+
+
+
+
+

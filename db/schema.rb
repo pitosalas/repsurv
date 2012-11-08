@@ -47,6 +47,8 @@ ActiveRecord::Schema.define(:version => 20121011224210) do
     t.integer  "start"
     t.integer  "fin"
     t.text     "status"
+    t.boolean  "open"
+    t.datetime "open_date"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

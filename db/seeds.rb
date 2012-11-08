@@ -26,9 +26,12 @@ if true
   rcount = 0
   surv.rounds.each do |rnd|
     puts "Adding round #{rcount}, start: #{rnd.start}, fin: #{rnd.fin}"
-    prog.rounds.create(number: rcount, start: rnd.start, fin: rnd.fin)
+    prog.rounds.create(number: rcount, start: rnd.start, fin: rnd.fin, open: false)
     rcount += 1
   end
+  last_round = Round.find(9)
+  last_round.open = true
+  last_round.save!
 end
 
 if true
