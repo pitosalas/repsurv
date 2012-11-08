@@ -1,27 +1,20 @@
 Rstest::Application.routes.draw do
 
-  #get "surveys/survey"
-
   root to: 'programs#index'
   resources :programs do
     resources :participants do
-      get 'survey' => 'surveys#survey'
+      resources :rounds do
+        get 'survey' => 'rounds#present_survey'
+        put 'survey' => 'rounds#store_survey'
+      end
     end
     resources :questions
     resources :rounds
-    member do 
+    member do
       get 'report' => 'reports#report'
     end
   end
-  resources :program do
-    resources :participant do
-      resources :question do
-        resources :round do
-          put :value
-        end
-      end
-    end
-  end
+
 
 
   # The priority is based upon order of creation:

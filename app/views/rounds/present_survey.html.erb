@@ -19,15 +19,19 @@
   </div>
 </div>
 
-<%= content_tag :table do %>
-  <%= content_tag :thead do %>
-    <% 5.times do |q| %>
-      <%= content_tag :th, "1" %>
-    <% end %>
-  <% end %>
-  <%= content_tag :tbody do %>
-    <%= render partial: 'surveys/value', collection: @values  %>
-  <% end %>
+<%= form_tag program_participant_round_survey_path(
+        program_id: @program.id, participant_id: @participant.id, round_id: @current_round.id), :method => 'put'  do %>
+  <table class="table table-condensed table-hover" id="survey">
+    <thead>
+      <% assessment_headers.each do |header| %>
+        <th><%=header%></th>
+      <% end %>
+    </thead>
+    <tbody>
+      <%= render partial: 'value', collection: @values  %> 
+    </tbody>
+  </table>
+  <%= submit_tag "Save" %>
 <% end %>
 
 

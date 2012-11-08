@@ -1,9 +1,0 @@
-<%= content_tag :tr do %>
-  <%= content_tag :td do %>
-    <%= Question.find(value.question_id).text %>
-  <% end %>
-
-  <% 4.times do |q| %>
-    <%= content_tag :td, "1" %>
-  <% end %>
-<% end %>

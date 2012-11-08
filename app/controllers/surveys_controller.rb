@@ -1,7 +1,7 @@
 class SurveysController < ApplicationController
   respond_to :html
 
-  def survey
+  def present_survey
     @program = Program.find(params[:program_id])
     @participant = Participant.find(params[:participant_id])
     @current_round =  @program.rounds.where(open: true)
@@ -16,5 +16,10 @@ class SurveysController < ApplicationController
         render layout: 'layouts/progtabs'
       }
     end
+  end
+
+  def store_survey
+    puts "***************** "
+    puts params.inspect
   end
 end

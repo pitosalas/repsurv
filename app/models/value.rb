@@ -19,17 +19,48 @@ class Value < ActiveRecord::Base
     values = []
     questions = prog.questions.all
     questions.each do |q|
-      attrs = {participant_id: partic.id, round_id: round.id, question_id: q.id}
-      v = prog.values.where(attrs).first
-      if v.nil?
-        v = prog.values.build
-        v.assign_attributes(attrs, without_protection: true)
-        v.save
-      end
+      v = find_or_create_value(prog.id, partic.id, round.id, q.id)
       values << v
     end
     values
   end
 
+  # Update a series of values according to the params hash.
+  # {"Qnn" => "val"} means store "val" in an existing or new Value object
+  def self.store_survey(program_id, participant_id, round_id, params)
+    params.each do |key, value|
+      if q = param_parse(key)
+        find_or_create_value(program_id, participant_id, round_id, q, value)
+      end
+    end
+  end
 
+private
+
+#
+# if the string 'key' starts with a "Q" then return the rest of 
+# the string as an integer, otherwise don't return anything.
+#
+  def self.param_parse(key)
+    parts = key.partition("Q")
+    if parts[1] == "Q"
+      parts[2].to_i
+    end
+  end
+
+  #
+  # Create a new Value if it doesn't already exist, and initialize the attributes per
+  # the parameters of the call.
+  #
+  def self.find_or_create_value(prog_id, part_id, round_id, quest_id, new_value=nil)
+    prog = Program.find(prog_id)
+    attrs = {participant_id: part_id, round_id: round_id, question_id: quest_id}
+    v = prog.values.where(attrs).first
+    if v.nil?
+      v = prog.values.build
+      v.assign_attributes(attrs, without_protection: true)
+    end
+    v.value = new_value
+    v
+  end
 end
