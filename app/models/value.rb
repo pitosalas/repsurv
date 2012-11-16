@@ -12,13 +12,34 @@ class Value < ActiveRecord::Base
     }
 
   #
+  # Return value as an integer, unless it's nil, in which case return nil
+  #
+  def value_as_i
+    value.nil? ? nil : value.to_i
+  end
+
+  #
+  # Get a value for a specific set of coordinates
+  #
+  def self.lookup(program_id, round_id, participant_id, question_id)
+    values = Value.where(program_id: program_id, 
+                round_id: round_id, 
+                participant_id: participant_id, 
+                question_id: question_id)
+    raise ArgumentError("More than one value in a slot") if values.size > 1
+    return nil if values.size == 0
+    values[0]
+  end
+
+
+  #
   # returns the set of value objects for this program, participant and round.
   # Value objects are created if they don't exist yet.
   #
   def self.find_or_create_round(prog, partic, round)
     values = []
-    questions = prog.questions.all
-    questions.each do |q|
+    all_questions = prog.questions.all
+    all_questions.each do |q|
       v = find_or_create_value(prog.id, partic.id, round.id, q.id)
       values << v
     end
@@ -43,7 +64,7 @@ private
 #
   def self.param_parse(key)
     parts = key.partition("Q")
-    if parts[1] == "Q"
+    if parts[1] == "Q" && parts[0] == ""
       parts[2].to_i
     end
   end
@@ -60,7 +81,8 @@ private
       v = prog.values.build
       v.assign_attributes(attrs, without_protection: true)
     end
-    v.value = new_value
+    v.value = new_value unless new_value.nil?
+    v.save
     v
   end
 end

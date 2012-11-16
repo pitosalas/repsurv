@@ -91,5 +91,7 @@ class RoundsController < ApplicationController
     participant_id = params[:participant_id]
     round_id = params[:round_id]
     Value.store_survey(program_id, participant_id, round_id, params)
+    redirect_to program_participant_round_survey_path
+
   end    
 end

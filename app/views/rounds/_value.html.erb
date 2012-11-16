@@ -2,11 +2,10 @@
   <%= content_tag :td do %>
     <%= Question.find(value.question_id).text %>
   <% end %>
-
-  <% 6.times do |answer| %>
+  <% 5.times do |answer| %>
     <%= content_tag :td do %>
       <% name = "Q#{value.question_id}" %>
-      <%= radio_button_tag name, "#{answer}" %>
+      <%= radio_button_tag name, "#{answer}", (value.value_as_i == answer) %>
     <% end %>
   <% end %>
 <% end %>

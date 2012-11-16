@@ -1,4 +1,4 @@
-<% 1.upto(1) do |n| %>
+<% 1.upto(2) do |n| %>
 program_<%= n%>:
   name: program<%= n%> 
   id: <%= n%>

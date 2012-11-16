@@ -16,6 +16,7 @@ ActiveRecord::Schema.define(:version => 20121011224210) do
   create_table "participants", :force => true do |t|
     t.string   "name"
     t.integer  "program_id"
+    t.string   "guid"
     t.boolean  "hidden"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false

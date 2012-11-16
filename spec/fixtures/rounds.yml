@@ -5,3 +5,11 @@ round_<%= n%>:
   program_id: 1
   open: <%= n == 4 %>
 <% end %>
+
+<% 1.upto(5) do |n| %>
+round_<%= 4+n%>:
+  id: <%= 4+n%>
+  number: <%= n%>
+  program_id: 2
+  open: false
+<% end %>
