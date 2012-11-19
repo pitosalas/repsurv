@@ -5,8 +5,8 @@ gem 'american_date'
 gem 'will_paginate'
 gem 'bootstrap-will_paginate'
 gem 'jquery-rails'
-gem "therubyracer"
-gem "less-rails" #Sprockets (what Rails 3.1 uses for its asset pipeline) supports LESS
+gem 'therubyracer'
+gem 'less-rails'
 gem "twitter-bootstrap-rails"
 
 group :development, :test do
@@ -29,7 +29,7 @@ group :development, :test do
 end
 
 group :test do
-  gem 'capybara', '1.1.2'
+  gem 'capybara'
 end
 
 group :production do

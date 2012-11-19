@@ -28,7 +28,6 @@ class DataCube
 
   def analyze_coords
     @prog = Program.find_by_id!(@coords[:program])
-    puts "****** #{@coords}, #{@prog}"
     @program_name = @prog.name
     @rows, @rows_english_label = code_to_class(@coords[:rows])
     @cols, @cols_english_label = code_to_class(@coords[:cols])

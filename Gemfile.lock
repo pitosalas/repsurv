@@ -165,7 +165,7 @@ PLATFORMS
 DEPENDENCIES
   american_date
   bootstrap-will_paginate
-  capybara (= 1.1.2)
+  capybara
   coffee-rails (~> 3.2.1)
   hirb
   jquery-rails
