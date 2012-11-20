@@ -11,5 +11,11 @@ require 'spec_helper'
 #   end
 # end
 describe ParticipantsHelper do
-  pending "add some examples to (or delete) #{__FILE__}"
+  it "generates correct survey link when there are no rounds" do
+
+# I know that in the fixtures, Program two has no rounds, so no active survey
+    prog = Program.find(2)
+    part = Participant.find(1)
+    current_survey_link(prog, part).should == "[no active survey right now]"
+  end
 end

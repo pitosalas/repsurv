@@ -63,7 +63,7 @@ class RoundsController < ApplicationController
 
   def present_survey
     @program = Program.find(params[:program_id])
-    @participant = Participant.find(params[:participant_id])
+    @participant = Participant.where_id_or_guid_is(params[:participant_id])
     @current_round =  @program.rounds.where(open: true)
 
     raise "More than one open round" unless @current_round.size == 1

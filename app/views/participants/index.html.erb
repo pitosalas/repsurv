@@ -14,6 +14,6 @@
     <%= render @participants %>
   </ul>
   <%= will_paginate %>
-  <%= link_to "Create a new Participant", new_program_participant_path %>
+  <%= link_to "Create a new Participant", new_program_participant_path(@program_id) %>
 </div>
 
