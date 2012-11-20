@@ -79,6 +79,8 @@ GEM
     less-rails (2.2.6)
       actionpack (>= 3.1)
       less (~> 2.2.0)
+    less-rails-bootstrap (2.2.0)
+      less-rails (~> 2.2.0)
     libv8 (3.3.10.4)
     libwebsocket (0.1.5)
       addressable
@@ -155,11 +157,6 @@ GEM
     treetop (1.4.12)
       polyglot
       polyglot (>= 0.3.1)
-    twitter-bootstrap-rails (2.1.5)
-      actionpack (>= 3.1)
-      less-rails (~> 2.2.3)
-      railties (>= 3.1)
-      therubyracer (>= 0.10.2)
     tzinfo (0.3.34)
     uglifier (1.3.0)
       execjs (>= 0.3.0)
@@ -182,6 +179,7 @@ DEPENDENCIES
   jquery-rails
   launchy
   less-rails
+  less-rails-bootstrap
   pg
   pry
   pry-rails
@@ -189,6 +187,5 @@ DEPENDENCIES
   rspec-rails
   sqlite3
   therubyracer
-  twitter-bootstrap-rails
   uglifier (>= 1.0.3)
   will_paginate
