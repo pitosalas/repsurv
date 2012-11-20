@@ -14,4 +14,9 @@ class Program < ActiveRecord::Base
     raise "More than one Round open" unless open_rounds.size <= 1
     open_rounds[0]
   end
+
+  def highest_question
+    questions.order("pos DESC").first.pos
+  end
+
 end

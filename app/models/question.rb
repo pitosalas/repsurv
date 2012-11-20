@@ -3,8 +3,9 @@ class Question < ActiveRecord::Base
   has_many :values
   belongs_to :program
 
+  validates :text, presence: true
+
   def row_label
     text
   end
-
 end

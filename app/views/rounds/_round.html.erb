@@ -1,8 +1,7 @@
 <li>
   <%= link_to round.number, edit_program_round_path(@program, round) %> |
   <%= round.number %> |
-  <%= round.start %> |
-  <%= round.fin %> |
+  <%= round.open %> |
   <%= round.status %> |
   <%= link_to "delete", program_round_path(@program, round), method: :delete, data: { confirm: "Are you sure?" } %>
 </li>

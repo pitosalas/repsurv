@@ -2,7 +2,7 @@ class QuestionsController < ApplicationController
   respond_to :html
   def index
     @program = Program.find(params[:program_id])
-    @questions = @program.questions.paginate(page: params[:page])
+    @questions = @program.questions.paginate(page: params[:page], order: 'pos ASC')
     respond_with @questions do |format|
       format.html {
         render layout: 'layouts/progtabs'
@@ -33,6 +33,8 @@ class QuestionsController < ApplicationController
   def new
     @program = Program.find(params[:program_id])
     @question = @program.questions.new
+    @question.pos = @program.highest_question + 1
+    @question.active = true
     respond_with @question do |format|
       format.html {
         render layout: 'layouts/progtabs'
@@ -59,10 +61,4 @@ class QuestionsController < ApplicationController
     flash[:success] = "Question has been deleted."
     redirect_to program_questions_path(@program)
   end
-
-
-
-
-
-
 end
