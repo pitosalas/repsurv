@@ -1,5 +1,6 @@
 class SampleData
   def self.create
+    puts `pwd`
     require_relative "./metricalc/metricalc.rb"
     surv = SurveyData.new
     inp = InputData.new
