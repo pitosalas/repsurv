@@ -55,10 +55,12 @@ class SampleData
     end
 
     if true
+      puts "[Adding Rounds info]"
       prog = Program.first
       Round.all.each do |rnd|
         puts "Adding data items for Round #{rnd.number}"
         Question.all.each do |qst|
+#          puts "[hanling question #{qst.text}]"
           ((rnd.start)..(rnd.fin)).each do 
             |resp_row|
             Value.create do |v|

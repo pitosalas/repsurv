@@ -2,6 +2,7 @@ require 'csv'
 class InputData
 
   def read(file, surv)
+    puts "[reading file #{file}]"
     rowcount = 0
     CSV.foreach(file) do |row|
       if rowcount == 0
