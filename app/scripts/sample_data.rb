@@ -1,10 +1,9 @@
 class SampleData
   def self.create
-    puts `pwd`
     require_relative "./metricalc/metricalc.rb"
     surv = SurveyData.new
     inp = InputData.new
-    inp.read "../metricalc/data/week9file.csv", surv
+    inp.read "scripts/metricalc/data/week9file.csv", surv
     surv.process
     round_range = []
 
