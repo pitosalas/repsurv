@@ -7,7 +7,7 @@ class CreateRounds < ActiveRecord::Migration
       t.integer   "fin"
       t.text      "status"
       t.boolean   "open"
-      t.datetime "open_date"
+      t.datetime  "open_date"
       t.timestamps
     end
   end
