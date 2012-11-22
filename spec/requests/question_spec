@@ -1,0 +1,24 @@
+require 'spec_helper'
+describe "Question" do
+  before(:each) { visit programs_url }
+  context "passes smoke test" do
+    it "handles zero question case ok" do
+      click_link "program3"
+      click_link "Questions"
+      click_link "Create a new Question"
+    end
+    it "handles non zero questions ok" do
+      click_link "program1"
+      click_link "Questions"
+      click_link "Create a new Question"
+    end
+    it "handles actually creating the question ok" do
+      click_link "program1"
+      click_link "Questions"
+      click_link "Create a new Question"
+      page.has_content?("Text of Question").should be_true
+      fill_in "question-text", with: "I am a cool question"
+      click_button "Save Question"
+    end
+  end
+end

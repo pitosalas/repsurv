@@ -16,7 +16,8 @@ class Program < ActiveRecord::Base
   end
 
   def highest_question
-    questions.order("pos DESC").first.pos
+    high_question = questions.order("pos DESC").first
+    high_question.nil? ? 0 : high_question.pos
   end
 
 end
