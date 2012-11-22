@@ -25,7 +25,7 @@ class ProgramsController < ApplicationController
   def create
     @program = Program.new(params[:program])
     if @program.save
-      redirect_to @program
+      redirect_to report_program_path(@program)
     else
       render :new
     end
