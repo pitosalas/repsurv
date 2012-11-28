@@ -1,5 +1,7 @@
 Rstest::Application.routes.draw do
 
+  devise_for :users
+
   root to: 'programs#index'
   resources :programs do
     resources :participants do
