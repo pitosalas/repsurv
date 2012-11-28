@@ -3,16 +3,22 @@
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email %></div>
+  <%= wrap_control_group do %>
+    <%= f.label :email %>
+    <%= f.email_field :email %>
+  <% end %>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+  <%= wrap_control_group do %>
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+  <% end %>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+  <%= wrap_control_group do %>
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %>
+  <% end %>
 
-  <div><%= f.submit "Sign up" %></div>
+  <%= f.submit "Sign up", class: "btn btn-small btn-primary" %>
 <% end %>
 
 <%= render "devise/shared/links" %>

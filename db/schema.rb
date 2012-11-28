@@ -11,10 +11,9 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121128203001) do
+ActiveRecord::Schema.define(:version => 20121128205203) do
 
   create_table "participants", :force => true do |t|
-    t.string   "name"
     t.integer  "program_id"
     t.string   "guid"
     t.boolean  "hidden"
@@ -38,6 +37,12 @@ ActiveRecord::Schema.define(:version => 20121128203001) do
     t.integer  "program_id"
     t.text     "active"
     t.text     "data_type"
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
+  end
+
+  create_table "roles", :force => true do |t|
+    t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end

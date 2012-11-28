@@ -9,11 +9,14 @@
     </p>
   </div>
   <div class="span8">
-  <%= will_paginate %>
-  <ul>
-    <%= render @participants %>
-  </ul>
-  <%= will_paginate %>
-  <%= link_to "Create a new Participant", new_program_participant_path(@program_id) %>
+  <% if @participants.size == 0 %>
+    <div class="alert">There are no participants assigned to this program yet!</div>
+  <% else %> 
+    <%= will_paginate %>
+    <ul>
+      <%= render @participants %>
+    </ul>
+    <%= will_paginate %>
+  <% end %>
 </div>
 
