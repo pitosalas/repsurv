@@ -1,5 +1,5 @@
 class Participant < ActiveRecord::Base
-  attr_accessible :name, :program_id, :hidden
+  attr_accessible :program_id, :hidden
   has_many :values
   belongs_to :user
 
@@ -19,5 +19,9 @@ class Participant < ActiveRecord::Base
       part = Participant.find_by_guid(key)
     end
     part
+  end
+
+  def name
+    user.name
   end
 end

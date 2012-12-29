@@ -13,8 +13,15 @@ group :development, :test do
   gem 'hirb'
   gem 'pry'
   gem 'pry-rails'
+  gem 'pry-debugger'
+  gem 'rspec-rails'
+  gem 'factory_girl_rails'
 end
 
+group :development do
+  gem "better_errors"
+  gem "binding_of_caller"
+end
 
 # Gems used only for assets and not required
 # in production environments by default.
@@ -22,11 +29,6 @@ end
 group :assets do
   gem 'coffee-rails', '~> 3.2.1'
   gem 'uglifier', '>= 1.0.3'
-end
-
-group :development, :test do
-    gem 'rspec-rails'
-    gem 'factory_girl_rails'
 end
 
 group :test do

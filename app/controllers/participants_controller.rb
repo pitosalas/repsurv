@@ -22,7 +22,7 @@ class ParticipantsController < ApplicationController
   end
 
   def update
-    @participant = participant.find(params[:id])
+    @participant = Participant.find(params[:id])
     if @participant.update_attributes(params[:participant])
       flash[:success] = "participant Updated!"
       redirect_to :back
