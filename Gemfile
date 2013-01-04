@@ -7,6 +7,7 @@ gem 'bootstrap-will_paginate'
 gem 'jquery-rails'
 gem 'sass-rails'
 gem 'devise'
+gem 'cancan'
 
 group :development, :test do
   gem 'sqlite3'
