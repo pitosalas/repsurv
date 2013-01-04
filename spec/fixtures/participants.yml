@@ -1,8 +1,9 @@
 <% 1.upto(2) do |n| %>
 part_1<%= n%>:
-  name: Person <%= n%> 
   id: <%= n%>
   guid: <%= [n.to_s, SecureRandom.hex(10)].join %>
   program_id: 1
+  user_id: 1
   hidden: false
 <% end %>
+

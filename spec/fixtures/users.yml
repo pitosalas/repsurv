@@ -1,0 +1,6 @@
+<% 1.upto(2) do |n| %>
+user_<%= n%>:
+  id: <%= n%>
+  email: "dummy<%= n%>@gmail.com"
+  name: "I M Dummy"
+<% end %>
