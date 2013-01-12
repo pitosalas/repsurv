@@ -1,9 +1,17 @@
-<% 1.upto(2) do |n| %>
-part_1<%= n%>:
+<% 1.upto(3) do |n| %>
+part_<%= n%>:
   id: <%= n%>
   guid: <%= [n.to_s, SecureRandom.hex(10)].join %>
   program_id: 1
-  user_id: 1
+  user_id: <%= n%>
   hidden: false
 <% end %>
 
+<% 21.upto(26) do |p| %>
+part_<%= p%>:
+  id: <%= p%>
+  guid: <%= [p.to_s, SecureRandom.hex(10)].join %>
+  program_id: <%= p <= 23 ? 11 : 12 %>
+  user_id: <%= p%>
+  hidden: false
+<% end %>

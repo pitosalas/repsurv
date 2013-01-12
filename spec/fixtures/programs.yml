@@ -1,5 +1,13 @@
 <% 1.upto(3) do |n| %>
 program_<%= n%>:
   name: program<%= n%> 
+  moderator_id: <%= n%>
   id: <%= n%>
+<% end %>
+
+<% 11.upto(12) do |c| %>
+classs_<%= c %>:
+  name: class<%= c %>
+  moderator_id: <%= c %>
+  id: <%= c %>
 <% end %>

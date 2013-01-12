@@ -1,6 +1,20 @@
-<% 1.upto(2) do |n| %>
+<% 1.upto(3) do |n| %>
 user_<%= n%>:
   id: <%= n%>
   email: "dummy<%= n%>@gmail.com"
-  name: "I M Dummy"
+  name: "I M Dummy <%= n%>"
+<% end %>
+
+<% 11.upto(12) do |t| %>
+teacher<%= t%>:
+  id: <%= t%>
+  email: teacher<%= t%>@gmail.com
+  name: Teacher <%= t%>
+<% end %>
+
+<% 21.upto(26) do |s| %>
+student<%= s%>:
+  id: <%= s%>
+  email: student<%= s%>@gmail.com
+  name: Student <%= s%>
 <% end %>

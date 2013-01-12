@@ -1,5 +1,7 @@
 <li>
   <%= link_to participant.user.name, user_path(participant.user_id) %> |
-  <%= participant.hidden %> |
-  <%= link_to "delete", program_participant_path(@program_id, participant), method: :delete, data: { confirm: "Are you sure?" } %>
+  <%= participant.hidden %>
+  <% if can? :destroy, participant %>
+    | <%= link_to "delete", program_participant_path(@program_id, participant), method: :delete, data: { confirm: "Are you sure?" } %>
+  <% end %>
 </li>

@@ -11,6 +11,22 @@ class Value < ActiveRecord::Base
       where(round_id: round, participant_id: participant, question_id: question)
     }
 
+  # Return true if this is owned by a certain user. Values are owned by the Participant
+  # Check user there.
+  def owned_by? a_user
+    a_user == participant.user
+  end
+
+  # This value is visbile to a user if the value's program is one of those that the user participates in
+  def visible_to? a_user
+    a_user.participates_in.include? program
+  end
+
+  # Value is managed by the owner of the value
+  def managed_by? a_user
+    owned_by? a_user
+  end
+
   #
   # Return value as an integer, unless it's nil, in which case return nil
   #

@@ -8,6 +8,7 @@ gem 'jquery-rails'
 gem 'sass-rails'
 gem 'devise'
 gem 'cancan'
+gem 'role_model'
 
 group :development, :test do
   gem 'sqlite3'

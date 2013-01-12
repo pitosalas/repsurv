@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121128205203) do
+ActiveRecord::Schema.define(:version => 20121128203001) do
 
   create_table "participants", :force => true do |t|
     t.integer  "program_id"
@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20121128205203) do
 
   create_table "programs", :force => true do |t|
     t.string   "name"
+    t.integer  "moderator_id"
     t.string   "description"
     t.boolean  "open"
     t.boolean  "locked"
@@ -38,12 +39,6 @@ ActiveRecord::Schema.define(:version => 20121128205203) do
     t.integer  "program_id"
     t.text     "active"
     t.text     "data_type"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
-  end
-
-  create_table "roles", :force => true do |t|
-    t.string   "name"
     t.datetime "created_at", :null => false
     t.datetime "updated_at", :null => false
   end
@@ -72,6 +67,7 @@ ActiveRecord::Schema.define(:version => 20121128205203) do
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
     t.string   "last_sign_in_ip"
+    t.integer  "roles_mask",             :default => 0,  :null => false
     t.datetime "created_at",                             :null => false
     t.datetime "updated_at",                             :null => false
   end

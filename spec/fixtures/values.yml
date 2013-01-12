@@ -1,3 +1,4 @@
+<% puts "yml file fixture #{__FILE__}" %>
 <% 1.upto(4) do |r| %>
   <% 1.upto(3) do |q| %>
     <% 1.upto(2) do |p| %>
