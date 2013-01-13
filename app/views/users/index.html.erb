@@ -1,8 +1,22 @@
-<h3>Users</h3>
-<ul class="users">
-  <% @users.each do |user| %>
-    <li>
-      <%= link_to user.email, user %> signed up <%= user.created_at.to_date %>
-    </li>
-  <% end %>
-</ul>
+<div class="row">
+  <div class="span8">
+    <p>
+      Users are individual people, with names and email. You need to create (or import) information about anyone who is logging in. When you do that, you will designate their role. Roles are:
+      <small><ul>
+        <li>Administrator: Can do anything at all.</li>
+        <li>Coordinator: Can create new programs and assign users to participate.</li>
+        <li>Participant: Can only participate in programs and only see their own info </li>
+      </ul></small>
+    </p>
+  </div>
+  <div class="span8">
+    <%= will_paginate %>
+    <ul>
+      <%= render @users %>
+    </ul>
+    <%= will_paginate %>
+    <% if can? :create, User %>
+      <%= link_to "Create a new User", new_user_path %>
+    <% end %>
+  </div>
+</div>

@@ -14,6 +14,10 @@
       <%= render @rounds %>
     </ul>
     <%= will_paginate %>
-    <%= link_to "Create a new Round", new_program_round_path %>
+
+    <% if can? :create, Round %>
+      <%= link_to "Create a new Round", new_program_round_path %>
+    <% end %>
+
   </div>
 </div>

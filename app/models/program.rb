@@ -36,7 +36,7 @@ class Program < ActiveRecord::Base
 
   # Program is managed by the owner of the program
   def managed_by? a_user
-    user == a_user
+    moderator == a_user
   end
 
   # This program is visbile to a user it is one of their programs

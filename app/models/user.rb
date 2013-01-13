@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :name
   # attr_accessible :title, :body
 
   has_many :participations, class_name: "Participant"
@@ -18,6 +18,11 @@ class User < ActiveRecord::Base
   include RoleModel
   roles :participant, :moderator, :admin
 
+  # get role as a string.
+  def role_to_s
+    roles.to_a[0].to_s.capitalize
+  end
+  
   # Return true if this is a_user's own instance
   def owned_by? a_user
     a_user == self

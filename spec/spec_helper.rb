@@ -2,7 +2,6 @@
 ENV["RAILS_ENV"] ||= 'test'
 require File.expand_path("../../config/environment", __FILE__)
 require 'rspec/rails'
-#require 'rspec/autorun'
 require 'capybara/rspec'
 
 # Requires supporting ruby files with custom matchers and macros, etc,
@@ -32,11 +31,8 @@ RSpec.configure do |config|
   config.infer_base_class_for_anonymous_controllers = false
 
   config.global_fixtures = :all
-  config.backtrace_clean_patterns = [
-    /\/lib\d*\/ruby\//,
-    /bin\//,
-    /gems/,
-    /spec\/spec_helper\.rb/,
-    /lib\/rspec\/(core|expectations|matchers|mocks)/
-  ]
+
+  # Factorygirl syntactical sugare
+  config.include FactoryGirl::Syntax::Methods
+
 end

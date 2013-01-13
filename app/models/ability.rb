@@ -24,18 +24,14 @@ class Ability
     #   can :update, Article, :published => true
     #
     # See the wiki for details: https://github.com/ryanb/cancan/wiki/Defining-Abilities
-
-    # Participant
-    # Program
-    # Question
-    # Round
-    # User
-    # Value
+    #
+    # Roles for user are: :participant, :moderator, :admin
 
     user ||= User.new # handle guest user
     if user.has_role? :admin
         can :manage, :all
     elsif user.has_role? :moderator
+        can :read, :all
         can :update, :all do |clazz|
             clazz.managed_by? user
         end
@@ -47,7 +43,6 @@ class Ability
             clazz.visible_to? user
         end
     end     
-
   end
 end
 

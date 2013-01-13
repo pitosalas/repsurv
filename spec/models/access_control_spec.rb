@@ -17,5 +17,17 @@ describe Program do
     p11.visible_to?(u21).should == true
     p11.visible_to?(u12).should == false
   end
-  it "knows who can admin it"
+
+  context "with factory girl" do
+    let(:goodguy) { create(:user, name: "Good guy") }
+    let(:badguy ) { create(:user, name: "Baddie") }
+    let(:p)       { create(:program, name: "A Program", moderator: goodguy ) }
+
+    it "can be admined by it's owned" do
+      p.managed_by?(goodguy).should == true
+    end
+    it "cannot be adminned by someone else" do
+      p.managed_by?(badguy).should == false
+    end
+  end
 end

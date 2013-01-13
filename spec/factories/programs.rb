@@ -1,7 +1,7 @@
 FactoryGirl.define do
   factory :program do
     name "My Program"
-    description "A great program"
+    description "Factory program"
     open true
     locked false
   end
