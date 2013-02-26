@@ -6,7 +6,7 @@ program_<%= n%>:
 <% end %>
 
 <% 11.upto(12) do |c| %>
-classs_<%= c %>:
+class_<%= c %>:
   name: class<%= c %>
   moderator_id: <%= c %>
   id: <%= c %>

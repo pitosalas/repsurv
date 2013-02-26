@@ -1,9 +1,15 @@
 class ProgramsController < ApplicationController
   skip_before_filter :authenticate_user!, only: [:index]
 
-
   respond_to :html
   
+  def bulk_add_participants
+    @program = Program.find(params[:id])
+    @participants = @program.participants.paginate(page: params[:page])
+    @result_log = @program.add_users_and_participants(params[:bulk_add_participants])
+    render 'participants/index', layout: 'layouts/progtabs'
+  end
+
   def index
     @programs = Program.paginate(page: params[:page])
     respond_with @programs

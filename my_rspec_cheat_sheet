@@ -1,8 +1,0 @@
-  it "uses a stub" do
-    abc = stub
-    abc.stub(:fetch) do |parm|
-      puts parm
-      "hello"
-    end
-    abc.fetch(1).should ==  "hello"
-  end

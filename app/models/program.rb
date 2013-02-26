@@ -1,5 +1,7 @@
 class Program < ActiveRecord::Base
   attr_accessible :name, :description, :open, :locked, :suppress_hidden_participants
+
+  attr_accessor :last_import_results
   has_many :questions
   has_many :settings
   has_many :rounds
@@ -42,6 +44,12 @@ class Program < ActiveRecord::Base
   # This program is visbile to a user it is one of their programs
   def visible_to? a_user
     a_user.participating_programs.include? self
+  end
+
+  # Interface to bulk adding of participants
+  def add_users_and_participants user_entered_text
+    pi = ParticipantImporter.new(ProgramServices.new(self))
+    @last_import_results = "hello world!!"
   end
 
 end

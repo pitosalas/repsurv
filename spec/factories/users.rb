@@ -4,6 +4,6 @@ FactoryGirl.define do
   factory :user do
     name "a name"
     email { "#{rand(100000)}foo@goo.com" }
-    password "I am a password"
+    password "aaaaaa"
   end
 end

@@ -1,8 +1,8 @@
-Rstest::Application.routes.draw do
+RepSurv::Application.routes.draw do
 
   root to: 'programs#index'
 
-  devise_for :users
+  devise_for :users, path_prefix: 'devise'
   resources :users
 
   resources :programs do
@@ -16,6 +16,7 @@ Rstest::Application.routes.draw do
     resources :rounds
     member do
       get 'report' => 'reports#report'
+      post 'bulk_add_participants'
     end
   end
 

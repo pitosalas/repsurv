@@ -1,1 +1,3 @@
-<%= user.role_to_s %>: <%= link_to user.email, user %> signed up <%= user.created_at.to_date %>
+<li>
+  <%= user.role_to_s %>: <%= link_to user.email, edit_user_path(user) %> (signed up <%= user.created_at.to_date %>)
+</li>

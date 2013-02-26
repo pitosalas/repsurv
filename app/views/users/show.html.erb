@@ -1,14 +1,4 @@
 <h3>User</h3>
 <p>User: <%= @user.name %></p>
 <p>Email: <%= @user.email if @user.email %></p>
-<div class="dropdown">
-  <a class="dropdown-toggle" id="dLabel" role="button" data-toggle="dropdown" data-target="#" href="/page.html">
-    Dropdown
-    <b class="caret"></b>
-  </a>
-  <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
-    <li>Administrator</li>
-    <li>Coordiantor</li>
-    <li>Participant</li>
-  </ul>
-</div>
+<p>Role: <%= @user.role_to_s %>

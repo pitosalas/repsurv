@@ -1,4 +1,6 @@
 class RoundsController < ApplicationController
+    load_and_authorize_resource
+
   respond_to :html
   def index
     @program = Program.find(params[:program_id])

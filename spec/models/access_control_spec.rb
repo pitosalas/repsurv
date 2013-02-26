@@ -1,11 +1,13 @@
 require 'spec_helper'
 
 describe Program do
-  let(:p11) { Program.find(11)}
-  let(:p12) { Program.find(12)}
-  let(:u11) { User.find(11)}
-  let(:u12) { User.find(12)}
-  let(:u21) { User.find(21)}
+  fixtures :programs
+  fixtures :users
+  let(:p11) { programs(:class_11)}
+  let(:p12) { programs(:class_12)}
+  let(:u11) { users(:teacher11)}
+  let(:u12) { users(:teacher12)}
+  let(:u21) { users(:student21)}
 
   
   it "knows who owns it" do

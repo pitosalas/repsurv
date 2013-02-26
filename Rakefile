@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-Rstest::Application.load_tasks
+RepSurv::Application.load_tasks

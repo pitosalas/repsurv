@@ -1,5 +1,5 @@
 <div class="row">
-  <div class="span8">
+  <div class="span10">
     <p>
       Participants are the peope you are surveying. The students, attendees, patients, whatever. Each program has a separate collection of participants. Participants must at least signify their email addresses so we can send them messages.
     </p>
@@ -9,14 +9,33 @@
     </p>
   </div>
   <div class="span8">
-  <% if @participants.size == 0 %>
-    <div class="alert">There are no participants assigned to this program yet!</div>
-  <% else %> 
-    <%= will_paginate %>
-    <ul>
-      <%= render @participants %>
-    </ul>
-    <%= will_paginate %>
-  <% end %>
+    <% if @participants.size == 0 %>
+      <div class="alert">There are no participants assigned to this program yet!</div>
+    <% else %> 
+      <%= will_paginate %>
+      <ul>
+        <%= render @participants %>
+      </ul>
+      <%= will_paginate %>
+    <% end %>
+  </div>
+  <div class="row span12" %>
+    <small>
+      You can bulk add users as participants to this program. The users will all be created with default passwords. You may then direct them to log in and change their passwords
+    </small>
+  </div>
+  <div class="row span12">
+    <div class="span4">
+        <%= form_tag bulk_add_participants_program_path(@program) do %>
+          <%= text_area_tag :bulk_add_participants, nil, { rows: 5, class: "span4" } %>
+          <%= submit_tag "Import Participants and Users" %>
+        <% end %>
+    </div>
+    <div class="span6">
+      <%= text_area_tag "vvv", @program.last_import_results, {class: "span6", disabled: true, rows: 5 }  %>
+      <p class="text-center muted"> 
+        results of import
+      </p>
+    </end>
+  </div>
 </div>
-
