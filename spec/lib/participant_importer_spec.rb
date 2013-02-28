@@ -44,14 +44,14 @@ END
   describe "adding participants" do
     it "properly adds participants" do
       pserv = double("ProgramServices")
-      pserv.should_receive(:smart_add_participant).with("pitosalas@gmail.com", nil, nil).and_return(:added_usr_n_part)
-      pserv.should_receive(:smart_add_participant).with("john_smith@abc.com", nil, nil).and_return(:added_usr_n_part)
+      pserv.should_receive(:smart_add_participant).with(nil, "pitosalas@gmail.com", nil).and_return(:added_usr_n_part)
+      pserv.should_receive(:smart_add_participant).with(nil, "john_smith@abc.com", nil).and_return(:added_usr_n_part)
       pi = ParticipantImporter.new(pserv)
       pi.import_info = simple_text
       pi.perform_import
     end
 
-    it "does not add invalid participant" do
+    it "does not add invalid email participant" do
       pserv = double("ProgramServices")
       pserv.should_receive(:smart_add_participant).with(any_args()).exactly(1).times.and_return(:invalid_email)
       pi = ParticipantImporter.new(pserv)

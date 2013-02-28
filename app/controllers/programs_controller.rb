@@ -7,7 +7,8 @@ class ProgramsController < ApplicationController
     @program = Program.find(params[:id])
     @participants = @program.participants.paginate(page: params[:page])
     @result_log = @program.add_users_and_participants(params[:bulk_add_participants])
-    render 'participants/index', layout: 'layouts/progtabs'
+    #render controller: "participants", action: "index"
+    redirect_to program_participants_path(@program)
   end
 
   def index

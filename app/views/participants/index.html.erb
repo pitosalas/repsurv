@@ -8,7 +8,7 @@
       You cannot delete a participants once the program is open. The ordering of the participants is alphabetical.
     </p>
   </div>
-  <div class="span8">
+  <div class="span10">
     <% if @participants.size == 0 %>
       <div class="alert">There are no participants assigned to this program yet!</div>
     <% else %> 
@@ -19,20 +19,20 @@
       <%= will_paginate %>
     <% end %>
   </div>
-  <div class="row span12" %>
-    <small>
+  <div class="row span10" id="import_block" %>
+    <p>
       You can bulk add users as participants to this program. The users will all be created with default passwords. You may then direct them to log in and change their passwords
-    </small>
+    </p>
   </div>
-  <div class="row span12">
-    <div class="span4">
+  <div class="row span10" id="import_block">
+    <div class="span3">
         <%= form_tag bulk_add_participants_program_path(@program) do %>
-          <%= text_area_tag :bulk_add_participants, nil, { rows: 5, class: "span4" } %>
-          <%= submit_tag "Import Participants and Users" %>
+          <%= text_area_tag :bulk_add_participants, nil, { rows: 5, class: "span3" } %>
+          <%= submit_tag "Import from csv" %>
         <% end %>
     </div>
     <div class="span6">
-      <%= text_area_tag "vvv", @program.last_import_results, {class: "span6", disabled: true, rows: 5 }  %>
+      <%= text_area_tag "", @program.last_import_results, {class: "span6", disabled: true, rows: 5 }  %>
       <p class="text-center muted"> 
         results of import
       </p>

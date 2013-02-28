@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "logged in" do
   before (:each) do
-    u = create(:user, name: "sir abc", email: "abc@gmail.com", password: "abcdef")
+    u = create(:user, name: "sir abc", email: "abc@gmail.com", password: "abcdef", roles: "moderator")
     prog = create(:program, name: "program", moderator: u)
     create(:participant, hidden: false, program: prog, user: u)
     visit programs_url

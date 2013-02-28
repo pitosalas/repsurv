@@ -7,27 +7,29 @@ class ProgramServices
   def smart_add_participant  u_name, u_email, u_password
     usr = find_or_add_user(u_name, u_email, u_password)
     add_participant(usr)
-    puts "sap: #{@result_code}"
     @result_code
   end
 
   private
 
   def find_or_add_user name, email, password
-    puts "#foau"
     user = User.where(email: email)
     if (user.size == 0)
       user = User.create(name: name, email: email, password: password)
-      @result_code = :added_usr_n_part
+      if user.errors.empty?
+        @result_code = :added_usr_n_part
+      else
+        @result_code = :invalid_usr
+      end
     else
       user = user[0]
       @result_code = :added_participant
     end
-    puts "foau: #{@result_code}"
     user
   end
 
   def add_participant user
-    @prog.participants.build(user: user, hidden: false)
+    part = @prog.participants.build(user: user, hidden: false)
+    part.save
   end
 end

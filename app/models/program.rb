@@ -49,7 +49,10 @@ class Program < ActiveRecord::Base
   # Interface to bulk adding of participants
   def add_users_and_participants user_entered_text
     pi = ParticipantImporter.new(ProgramServices.new(self))
-    @last_import_results = "hello world!!"
+    pi.import_info = user_entered_text
+    binding.pry
+    pi.perform_import
+    @last_import_results = pi.message_log.join("\n")
   end
 
 end
