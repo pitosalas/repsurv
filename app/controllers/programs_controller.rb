@@ -1,18 +1,23 @@
 class ProgramsController < ApplicationController
-  skip_before_filter :authenticate_user!, only: [:index]
+  before_filter :authenticate_user!
 
   respond_to :html
   
-  def bulk_add_participants
-    @program = Program.find(params[:id])
-    @participants = @program.participants.paginate(page: params[:page])
-    @result_log = @program.add_users_and_participants(params[:bulk_add_participants])
-    #render controller: "participants", action: "index"
-    redirect_to program_participants_path(@program)
+  def index2
+    @programs = Program.paginate(page: params[:page])
+    respond_with @programs
   end
 
   def index
-    @programs = Program.paginate(page: params[:page])
+    if (current_user.nil? || current_user.has_roles?(:admin))
+      @programs = Program.paginate(page: params[:page])
+    elsif current_user.has_roles? (:moderator)
+      @programs = current_user.moderated_programs.paginate(page: params[:page])
+    elsif current_user.has_roles? (:participant)
+      @programs = current_user.participating_programs.paginate(page: params[:page])
+    else
+      raise "programs_controller#index user role exception for: #{current_user.name}"
+    end
     respond_with @programs
   end
 
@@ -58,5 +63,14 @@ class ProgramsController < ApplicationController
       render 'edit'
     end
   end
+
+  def bulk_add_participants
+    @program = Program.find(params[:id])
+    @participants = @program.participants.paginate(page: params[:page])
+    @result_log = @program.add_users_and_participants(params[:bulk_add_participants])
+    #render controller: "participants", action: "index"
+    redirect_to program_participants_path(@program)
+  end
+
 
 end

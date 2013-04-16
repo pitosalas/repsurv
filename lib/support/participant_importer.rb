@@ -1,5 +1,4 @@
 require 'csv'
-require 'pry'
 class ParticipantImporter
   attr_accessor :import_info, :message_log
   attr_reader :importable_users

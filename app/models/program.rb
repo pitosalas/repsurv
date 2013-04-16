@@ -1,5 +1,5 @@
 class Program < ActiveRecord::Base
-  attr_accessible :name, :description, :open, :locked, :suppress_hidden_participants
+  attr_accessible :name, :description, :open, :locked, :suppress_hidden_participants, :moderator, :id
 
   attr_accessor :last_import_results
   has_many :questions
@@ -10,6 +10,14 @@ class Program < ActiveRecord::Base
   belongs_to :moderator, class_name: User
   has_many :participants
   has_many :users, through: Participant
+
+  def self.participated_in_by usr
+    self.all.select {|p| p.visible_to? (usr)}
+  end
+
+  def self.moderated_by usr
+    self.all.select {|p| p.managed_by? (usr)}
+  end
 
 #
 # return the currently open Round for this program, or nil
@@ -30,15 +38,18 @@ class Program < ActiveRecord::Base
     Program.joins(:participants).where('participants.user_id' => user.id)
   end
 
+  # all programs where a certain user moderates
+  def self.where_user_moderates(user)
+    Program.where(moderator: user)
+  end
 
   # Return true if this is owned by a certain user.
   def owned_by? a_user
     a_user == moderator
   end
 
-  # Program is managed by the owner of the program
   def managed_by? a_user
-    moderator == a_user
+    a_user == moderator
   end
 
   # This program is visbile to a user it is one of their programs
@@ -50,7 +61,6 @@ class Program < ActiveRecord::Base
   def add_users_and_participants user_entered_text
     pi = ParticipantImporter.new(ProgramServices.new(self))
     pi.import_info = user_entered_text
-    binding.pry
     pi.perform_import
     @last_import_results = pi.message_log.join("\n")
   end

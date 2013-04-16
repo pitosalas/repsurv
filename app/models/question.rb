@@ -1,5 +1,5 @@
 class Question < ActiveRecord::Base
-  attr_accessible :text, :pos, :data_type, :active
+  attr_accessible :text, :pos, :data_type, :active, :id, :program_id
   has_many :values
   belongs_to :program
 

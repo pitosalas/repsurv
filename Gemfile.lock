@@ -58,6 +58,7 @@ GEM
       execjs
     coffee-script-source (1.4.0)
     columnize (0.3.6)
+    database_cleaner (0.8.0)
     debugger (1.2.3)
       columnize (>= 0.3.1)
       debugger-linecache (~> 1.1.1)
@@ -114,6 +115,8 @@ GEM
       pry (~> 0.9.10)
     pry-rails (0.2.2)
       pry (>= 0.9.10)
+    pry-stack_explorer (0.4.7)
+      binding_of_caller (~> 0.6.8)
     rack (1.4.1)
     rack-cache (1.2)
       rack (>= 0.4)
@@ -159,6 +162,8 @@ GEM
       railties (~> 3.2.0)
       sass (>= 3.1.10)
       tilt (~> 1.3)
+    seed_dumper (0.1.3)
+      rails
     selenium-webdriver (2.25.0)
       childprocess (>= 0.2.5)
       libwebsocket (~> 0.1.3)
@@ -196,6 +201,7 @@ DEPENDENCIES
   cancan
   capybara
   coffee-rails (~> 3.2.1)
+  database_cleaner
   devise
   factory_girl_rails (~> 4.0)
   faker
@@ -206,10 +212,12 @@ DEPENDENCIES
   pry
   pry-debugger
   pry-rails
+  pry-stack_explorer
   rails
   role_model
   rspec-rails
   sass-rails
+  seed_dumper
   sqlite3
   uglifier (>= 1.0.3)
   will_paginate

@@ -1,5 +1,5 @@
 class Value < ActiveRecord::Base
-  attr_accessible :value
+  attr_accessible :value, :id, :round_id, :participant_id, :question_id, :program_id
   belongs_to :participant
   belongs_to :question
   belongs_to :round

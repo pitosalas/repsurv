@@ -1,6 +1,15 @@
 require_relative "./metricalc/metricalc.rb"
 
-class PrepDb
+class JbsData
+  def self.delete_all
+    User.where('email != ?', 'pitosalas@gmail.com').destroy_all
+    Participant.destroy_all
+    Program.destroy_all
+    Question.destroy_all
+    Round.destroy_all
+    Value.destroy_all
+  end
+  
   def self.run 
     @sample = SampleData.new
     @sample.program_init
@@ -56,7 +65,7 @@ class SampleData
     users = ["Rachel", "Jeremy Coffman", "Sam", "Eitan", "Kendall", "Avishek Neupane", 
              "Mustapha Isa", "Shu Lin", "Fatima", "Ezra", "Tom"]
     make_user(true, "unknown", "unknown@gmail.com")
-    users.each { |u| make_user(true, u, "#{u}@gmail.com") }
+    users.each { |u| make_user(true, u, "#{u.parameterize}@gmail.com") }
     puts "Added Unknown + 11 Students from JBS 2012"
   end
 

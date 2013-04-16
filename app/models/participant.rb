@@ -1,5 +1,5 @@
 class Participant < ActiveRecord::Base
-  attr_accessible :program_id, :hidden, :user
+  attr_accessible :program_id, :hidden, :user, :id, :user_id, :guid
   has_many :values
   belongs_to :user
   belongs_to :program

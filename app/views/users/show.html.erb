@@ -2,3 +2,4 @@
 <p>User: <%= @user.name %></p>
 <p>Email: <%= @user.email if @user.email %></p>
 <p>Role: <%= @user.role_to_s %>
+<p><%= link_to "Go to To Do List", user_todolist_index_path(@user) %></p>

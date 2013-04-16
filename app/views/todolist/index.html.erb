@@ -1,0 +1,10 @@
+<h1>To Do List for <%= @todolist.user_name %> </h1>
+<% if @todolist.anything? %>
+	<% @todolist.todo_items.each do |item| %>
+		<%= render(partial: "todo_item", object: item) %>
+	<% end %>
+<% else %>
+	<h3>Congratulations. You are all caught up!</h3>
+<% end %>
+
+

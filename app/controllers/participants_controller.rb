@@ -1,5 +1,8 @@
 class ParticipantsController < ApplicationController
+  before_filter :authenticate_user!
+
   respond_to :html
+  
   def index
     @program_id = params[:program_id]
     @program = Program.find(@program_id)

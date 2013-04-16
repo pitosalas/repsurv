@@ -1,9 +1,16 @@
 RepSurv::Application.routes.draw do
 
+  get "todolist/index"
+
   root to: 'programs#index'
 
   devise_for :users, path_prefix: 'devise'
-  resources :users
+  resources :users do
+    resources :todolist do
+      get 'survey' => 'rounds#present_survey'
+      put 'survey' => 'rounds#store_survey'
+    end
+  end
 
   resources :programs do
     resources :participants do

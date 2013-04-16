@@ -15,14 +15,18 @@ group :development, :test do
   gem 'hirb'
   gem 'pry'
   gem 'pry-rails'
+  gem 'pry-stack_explorer'
   gem 'pry-debugger'
   gem 'rspec-rails'
   gem 'factory_girl_rails', "~> 4.0"
+  gem 'database_cleaner'
+  gem 'faker'
 end
 
 group :development do
   gem "better_errors"
   gem "binding_of_caller"
+  gem "seed_dumper"
 end
 
 # Gems used only for assets and not required

@@ -27,25 +27,25 @@ class Ability
     #
     # Roles for user are: :participant, :moderator, :admin
 
-    user ||= User.new # handle guest user
-
+    user ||= User.new(roles: :public, name: "Senior Guest") # handle guest user, who is just a participant
     if user.has_role? :admin
       can :manage, :all
     elsif user.has_role? :moderator
       can :read, :all
-      can :update, :all do |clazz|
+      can :update, :all do 
+        |clazz|
           clazz.managed_by? user
       end
     elsif user.has_role? :participant
-      can :update, :all do |clazz|
+      can :update, :all do
+        |clazz|
           clazz.owned_by? user
       end
-      can :read, :all do |clazz|
+      can :read, :all do
+        |clazz|
           clazz.visible_to? user
       end
-    else
-      raise "Role decoding in Ability fell through"
-    end     
+    end
   end
 end
 

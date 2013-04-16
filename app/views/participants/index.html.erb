@@ -21,7 +21,7 @@
   </div>
   <div class="row span10" id="import_block" %>
     <p>
-      You can bulk add users as participants to this program. The users will all be created with default passwords. You may then direct them to log in and change their passwords
+      You can bulk add users as participants to this program. The users will all be created with default passwords. You may then direct them to log in and change their passwords. One line per user, as follows: "email, name, password"
     </p>
   </div>
   <div class="row span10" id="import_block">
@@ -32,7 +32,7 @@
         <% end %>
     </div>
     <div class="span6">
-      <%= text_area_tag "", @program.last_import_results, {class: "span6", disabled: true, rows: 5 }  %>
+      <%= text_area_tag "", @program.last_import_results, {class: "span5", disabled: true, rows: 5 }  %>
       <p class="text-center muted"> 
         results of import
       </p>

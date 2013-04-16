@@ -1,12 +1,17 @@
-class UsersController < ApplicationController
-  load_and_authorize_resource
+require 'will_paginate/array'
 
+class UsersController < ApplicationController
 
   def index
-      @users = User.paginate(page: params[:page])
+    unless current_user.nil? 
+      @users = User.all.find_all { |user| user.visible_to? current_user }
+      @users = @users.paginate(page: params[:page])
+    end
   end
 
   def show
+    @user = User.find(params[:id])
+    authorize! :show, @user
   end
 
   def new
@@ -22,6 +27,8 @@ class UsersController < ApplicationController
   end
 
   def edit
+    @user = User.find(params[:id])
+    authorize! :edit , @user
   end
 
   def update

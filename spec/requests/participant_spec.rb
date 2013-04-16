@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "logged in" do
+describe "Logged in user" do
   before (:each) do
     u = create(:user, name: "sir abc", email: "abc@gmail.com", password: "abcdef", roles: "moderator")
     prog = create(:program, name: "program", moderator: u)
@@ -12,9 +12,9 @@ describe "logged in" do
     click_button "Sign in"
   end
 
-  describe "program list" do
+  describe "Sees program list" do
     it { page.should have_content "program" }
-    it "has clickable program" do 
+    it "Has clickable program" do 
         click_link "program"
         click_link "Participants"
         page.should have_content "sir abc"

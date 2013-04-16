@@ -10,13 +10,17 @@
     </p>
   </div>
   <div class="span8">
-    <%= will_paginate %>
-    <ul>
-      <%= render @users %>
-    </ul>
-    <%= will_paginate %>
-    <% if can? :create, User %>
-      <%= link_to "Create a new User", new_user_path %>
+    <% if @users.nil? %>
+      <h3>No Users Visible To You</h3>
+    <% else %> 
+      <%= will_paginate %>
+      <ul>
+        <%= render @users %>
+      </ul>
+      <%= will_paginate %>
+      <% if can? :create, User %>
+        <%= link_to "Create a new User", new_user_path %>
+      <% end %>
     <% end %>
   </div>
 </div>
