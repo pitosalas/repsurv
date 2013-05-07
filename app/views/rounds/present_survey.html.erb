@@ -28,7 +28,7 @@
       <% end %>
     </thead>
     <tbody>
-      <%= render partial: 'value', collection: @values  %> 
+      <%= render partial: 'response', collection: @responses  %> 
     </tbody>
   </table>
   <%= submit_tag "Save" %>
@@ -39,7 +39,7 @@
   <%= debug @program %>
   <%= debug @participant %>
   <%= debug @current_round %>
-  <%= debug @values %>
+  <%= debug @responses %>
   <%= params.inspect %>
 <% end %>
 

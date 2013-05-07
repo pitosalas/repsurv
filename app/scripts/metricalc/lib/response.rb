@@ -28,7 +28,7 @@ class Response
     @data = resp_array
   end
 
-  def value(question)
+  def response(question)
     @data[question]
   end
 

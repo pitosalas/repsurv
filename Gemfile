@@ -9,6 +9,7 @@ gem 'sass-rails'
 gem 'devise'
 gem 'cancan'
 gem 'role_model'
+gem 'values'
 
 group :development, :test do
   gem 'sqlite3'
@@ -27,6 +28,7 @@ group :development do
   gem "better_errors"
   gem "binding_of_caller"
   gem "seed_dumper"
+  gem "awesome_print"
 end
 
 # Gems used only for assets and not required

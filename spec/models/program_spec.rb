@@ -1,5 +1,5 @@
 require 'spec_helper'
-include SpecHelpers
+include SpecTestDataFactories
 
 describe Program do
   it { Program.find(1).current_round.id.should eq 4 }
@@ -13,7 +13,7 @@ end
 describe Program do
 	before do 
 		clean_database
-		setup_test_data
+		setup_test_data_1
 	end
 
 	describe "when listing subsets" do

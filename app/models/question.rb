@@ -1,6 +1,6 @@
 class Question < ActiveRecord::Base
   attr_accessible :text, :pos, :data_type, :active, :id, :program_id
-  has_many :values
+  has_many :responses
   belongs_to :program
 
   validates :text, presence: true

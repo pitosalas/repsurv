@@ -65,13 +65,13 @@ class DataCube
   end
 
 #
-# return a vector of the values that will be displayed, 
+# return a vector of the responses that will be displayed, 
 # somehow, for a specific cell.
 #
   def cell_values(row_index, col_index)
     row = row_at(row_index)
     col = col_at(col_index)
-    Value.where(
+    Response.where(
       id_sym(row) => row.id,
       id_sym(col) => col.id).map(&:value)
   end

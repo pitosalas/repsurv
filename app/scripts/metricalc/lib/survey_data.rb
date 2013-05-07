@@ -42,7 +42,7 @@ class SurveyData
   end
 
   def cell(question_col, response_row)
-    @responses[response_row].value(question_col)
+    @responses[response_row].responses(question_col)
   end
 
   def n_responses_for_round n

@@ -71,16 +71,16 @@ class RoundsController < ApplicationController
     raise "More than one open round" unless @current_round.size == 1
     @current_round = @current_round[0]
 
-    @values = Value.find_or_create_round(@program, @participant, @current_round)
+    @response = Response.find_or_create_round(@program, @participant, @current_round)
 
-    respond_with @values do |format|
+    respond_with @response do |format|
       format.html {
         render layout: 'layouts/progtabs'
       }
     end
   end
 
-# Survey containing data for multiple values for this round
+# Survey containing data for multiple responses for this round
 #
 # format of params hash:
 #
@@ -92,7 +92,7 @@ class RoundsController < ApplicationController
     program_id = params[:program_id]
     participant_id = params[:participant_id]
     round_id = params[:round_id]
-    Value.store_survey(program_id, participant_id, round_id, params)
+    Response.store_survey(program_id, participant_id, round_id, params)
     redirect_to program_participant_round_survey_path
 
   end    

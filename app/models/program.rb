@@ -5,7 +5,9 @@ class Program < ActiveRecord::Base
   has_many :questions
   has_many :settings
   has_many :rounds
-  has_many :values
+  has_many :open_rounds, :class_name => 'Round', :conditions => { open: true }
+  
+  has_many :responses
 
   belongs_to :moderator, class_name: User
   has_many :participants
@@ -52,8 +54,12 @@ class Program < ActiveRecord::Base
     a_user == moderator
   end
 
-  # This program is visbile to a user it is one of their programs
+  # This program is visbile to a user if the user participates in it
   def visible_to? a_user
+    user_is_participant? a_user
+  end
+
+  def user_is_participant? a_user
     a_user.participating_programs.include? self
   end
 

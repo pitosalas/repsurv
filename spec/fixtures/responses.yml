@@ -2,7 +2,7 @@
   <% 1.upto(3) do |q| %>
     <% 1.upto(2) do |p| %>
 
-value_r<%= r%>_q<%= q%>_p<%= p%>:
+response_r<%= r%>_q<%= q%>_p<%= p%>:
   program_id: 1
   value: <%= p==1 ? q : r %>
   round_id: <%= r %>

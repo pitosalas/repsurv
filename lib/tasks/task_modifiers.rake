@@ -1,6 +1,6 @@
 namespace :db do
   namespace :test do
-    desc "task_modifiers.rake"
+    desc "from task_modifiers.rake"
     task :prepare => :environment do
       Rake::Task["db:seed"].invoke
     end
@@ -20,9 +20,9 @@ end
 
 namespace :app do
   namespace :seed do
-    desc "load sample programs"
+    desc "load sample data based on jbs stuff"
     task :load => [:environment, "db:seed"] do
-      %w(round participant program question user value).map { |name| seed_table_with_data name }
+      %w(round participant program question user response).map { |name| seed_table_with_data name }
     end
   end
 

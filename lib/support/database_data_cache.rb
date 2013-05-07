@@ -18,25 +18,25 @@ class DatabaseDataCache
     result = self.read_cache(arg_hash)
     return result if result.present?
     if (arg_hash[:round] == :all)
-      values_map = all_rounds(arg_hash[:question], arg_hash[:respondent])
-      set_cache(arg_hash, values_map)
+      responses_map = all_rounds(arg_hash[:question], arg_hash[:respondent])
+      set_cache(arg_hash, responses_map)
     elsif (arg_hash[:respondent] == :all)
-      values_map = all_respondents(arg_hash[:question], arg_hash[:round])
-      set_cache(arg_hash, values_map)
+      responses_map = all_respondents(arg_hash[:question], arg_hash[:round])
+      set_cache(arg_hash, responses_map)
     else
       raise ArgumentError("no matching arguments in DatabaseDataCache #{arg_hash}")
     end
   end
 
   def self.all_rounds(q, r)
-    values = Value.where(:question_id => q, respondent_id: r).joins(:round).order("number")
-    values.map { |v| v.value.to_i }
+    responses = Value.where(:question_id => q, respondent_id: r).joins(:round).order("number")
+    responses.map { |v| v.response.to_i }
   end
 
   def self.all_respondents(q, r)
     rails ArgumentError unless q.class == Fixnum && r.class == Fixnum
-    values = Value.where(:question_id => q, round_id: r).joins(:respondent)
-    values.map { |v| v.value.to_i }
+    responses = Value.where(:question_id => q, round_id: r).joins(:respondent)
+    responses.map { |v| v.response.to_i }
   end
 
   def self.dump_cache
@@ -49,9 +49,9 @@ class DatabaseDataCache
     @hash[key]
   end
 
-  def self.set_cache key, value
+  def self.set_cache key, response
     @hash ||= {}
-    @hash[key] = value
+    @hash[key] = response
   end
 
 end

@@ -1,6 +1,6 @@
-class CreateValues < ActiveRecord::Migration
+class CreateResponses < ActiveRecord::Migration
     def change
-      create_table :values do |t|
+      create_table :responses do |t|
         t.string   "value"
         t.integer  "round_id"
         t.integer  "participant_id"

@@ -1,6 +1,6 @@
-<h1>To Do List for <%= @todolist.user_name %> </h1>
-<% if @todolist.anything? %>
-	<% @todolist.todo_items.each do |item| %>
+<h2>To Do List for <%= @todolist.user_name %> </h2>
+<% if @todolist.count > 0%>
+	<% @todolist.each do |item| %>
 		<%= render(partial: "todo_item", object: item) %>
 	<% end %>
 <% else %>

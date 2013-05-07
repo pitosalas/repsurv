@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'pry'
 
 describe User do
 	context "Programs with overlapping participations" do
@@ -30,6 +29,21 @@ describe User do
 
 		it "two users dont share a program they should not be visible to each other" do
 			(@us1.visible_to? @us3).should_not be_true
+		end
+
+		it "correctly figures out the participations of @us1" do
+			participation = @us1.participant_in @pr1
+			participation.should == @part1
+		end
+
+		it "correctly figures out the participations of @us2" do
+			participation = @us2.participant_in @pr1
+			participation.should == @part2
+		end
+
+		it "correctly figures out the participations of @us3" do
+			participation = @us3.participant_in @pr1
+			participation.should be_nil
 		end
 	end
 

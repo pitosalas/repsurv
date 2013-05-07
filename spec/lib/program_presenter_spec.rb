@@ -1,8 +1,5 @@
 require_relative '../../lib/support/program_presenter'
-require_relative '../support/spec_helpers'
 require 'rspec'
-
-include SpecHelpers
 
 describe ProgramPresenter do
 	context "self.all_for" do

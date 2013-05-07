@@ -11,7 +11,7 @@ class SampleData
 		Program.destroy_all
 		Question.destroy_all
 		Round.destroy_all
-		Value.destroy_all
+		Response.destroy_all
 	end
 
 	def initialize

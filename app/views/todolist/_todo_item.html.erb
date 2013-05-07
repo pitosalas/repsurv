@@ -1,0 +1,23 @@
+<hr>
+<h3>"<%= todo_item.program_name %>"</h3>
+<h5>
+	<%= todo_item.round_name %>
+	<%if todo_item.round_close != nil %>
+	, <%= todo_item.round_open %>:<%= todo_item.round_close %>
+	<% end %>
+ 	(<%= todo_item.round_identifier %>) 
+ </h5>
+
+You still need to respond to <%= todo_item.open_questions %> questions 
+for <%= todo_item.round_name %><br/>
+
+Of <%= todo_item.total_participants %> total participants, 
+<%= todo_item.completed_round %> have completed this round, 
+and <%= todo_item.not_completed_yet %> have not yet. <br/>
+
+<%if todo_item.round_close != nil %>
+	There are <%= (todo_item.round_close - Date.today).distance_of_time_in_words %> left for this round<br/>
+<% end %>	
+<p>
+	<%=button_to('Go To Survey', todo_item.survey_url, class: "btn btn-large btn-primary") %>
+</p>

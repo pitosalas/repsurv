@@ -1,7 +1,8 @@
 class Round < ActiveRecord::Base
-  attr_accessible :number, :start, :fin, :status, :open, :id, :round_id, :participant_id, :question_id, :program_id
-  has_many :values
+  attr_accessible :number, :start, :fin, :status, :open, :id, :program_id
+  has_many :responses
   belongs_to :program
+
 
   def row_label
     "round #{number}"
@@ -20,6 +21,18 @@ class Round < ActiveRecord::Base
 
   # This Round is visbile to a user if the Round's program is one of those that the user participates in
   def visible_to? a_user
-    a_user.participates_in.include? program
+    a_user.participating_programs.include? program
+  end
+
+  def responses_given a_participant
+    responses.where(round_id: id, participant_id: a_participant.id, program_id: program.id)
+  end
+
+  def still_open_for a_participant
+    program.questions - responses_given(a_participant).map(&:question)
+  end
+
+  def response_count_by_participant
+    responses.group(:participant_id).count
   end
 end

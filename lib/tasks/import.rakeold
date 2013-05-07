@@ -67,7 +67,7 @@ namespace :import do
 		 				else
 		 					v.respondent = Respondent.find_by_name("Unknown")
 		 				end
-						v.value = !cell.nil? ? (Response.string2choice(cell)) : nil
+						v.response = !cell.nil? ? (Response.string2choice(cell)) : nil
 						v.question = qst
 						v.round = rnd
 						v.respondent_id = 0

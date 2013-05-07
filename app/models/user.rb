@@ -48,4 +48,13 @@ class User < ActiveRecord::Base
     (a_user == self) || intersection.length > 0
   end
 
+  # Return the set of particpations of this user in a certain program.
+  # Should be zero or 1
+  def participant_in program
+    programs_participants = program.participants
+    users_participations = participations
+    result = programs_participants & users_participations
+    raise "user#participant_in_program error" if result.length > 1
+    result.first
+  end
 end
