@@ -44,7 +44,7 @@ describe Round do
 				@q0 = @td1[:questions][0]
 				@part0 = @td1[:participants][0]
 				@part1 = @td1[:participants][1]
-				create(:response, participant: @part0, program: @p, round: @r1, question: @q0)
+				FactoryGirl.create(:response, participant: @part0, program: @p, round: @r1, question: @q0)
 			}
 			it "knows how many questions there are total" do
 				expect(@p.questions.length).to eq 5
