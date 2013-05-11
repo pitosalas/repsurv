@@ -1,5 +1,4 @@
 require_relative '../../lib/support/participant_importer'
-require 'rspec'
 
 describe ParticipantImporter do
   let (:simple_text) {"pitosalas@gmail.com\njohn_smith@abc.com"}

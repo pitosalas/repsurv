@@ -1,5 +1,4 @@
 require_relative '../../lib/support/program_presenter'
-require 'rspec'
 
 describe ProgramPresenter do
 	context "self.all_for" do

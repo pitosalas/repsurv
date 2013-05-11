@@ -1,5 +1,4 @@
 require_relative '../../lib/support/report_presenter'
-require 'rspec'
 
 describe ReportPresenter do
   before(:each) do

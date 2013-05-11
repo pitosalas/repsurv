@@ -5,6 +5,7 @@ describe "Non-logged in home page" do
     page.should have_content "Repeat Survey"
   end
 end
+
 describe "Logged in home page" do
   before(:each) do
     create(:user, name: "sir abc", email: "abc@gmail.com", password: "abcdef", roles: "moderator")

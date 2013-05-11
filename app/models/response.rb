@@ -11,7 +11,7 @@ class Response < ActiveRecord::Base
   #
   def self.find_or_create_round(prog, partic, round)
     responses = []
-    all_questions = prog.questions.all
+    all_questions = prog.questions
     all_questions.each do |q|
       v = find_or_create_value(prog.id, partic.id, round.id, q.id)
       responses << v
