@@ -1,4 +1,4 @@
-class Response
+class Responsex
 
   attr_reader :time
   

@@ -1,6 +1,6 @@
 require_relative "./lib/survey_data"
 require_relative "./lib/input_data"
-require_relative "./lib/response"
+require_relative "./lib/responsex"
 require_relative "./lib/round"
 
 if __FILE__ == $0
