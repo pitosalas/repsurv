@@ -1,5 +1,3 @@
 == Repsurv
 
-{<img src="https://codeclimate.com/github/pitosalas/repsurv.png" />}[https://codeclimate.com/github/pitosalas/repsurv]
-
-{<img src="https://drone.io/github.com/pitosalas/repsurv/status.png" />}[https://drone.io/github.com/pitosalas/repsurv/latest)]
+{<img src="https://codeclimate.com/github/pitosalas/repsurv.png" />}[https://codeclimate.com/github/pitosalas/repsurv] {<img src="https://drone.io/github.com/pitosalas/repsurv/status.png" />}[https://drone.io/github.com/pitosalas/repsurv/latest)]
