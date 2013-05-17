@@ -1,5 +1,7 @@
 class Program < ActiveRecord::Base
-  attr_accessible :name, :description, :open, :locked, :suppress_hidden_participants, :moderator, :id
+  attr_accessible :name, :description, :open, 
+                  :locked, :suppress_hidden_participants, 
+                  :moderator, :id, :opened, :closed
 
   attr_accessor :last_import_results
   has_many :questions
@@ -20,7 +22,6 @@ class Program < ActiveRecord::Base
   def self.moderated_by usr
     self.all.select {|p| p.managed_by? (usr)}
   end
-
 #
 # return the currently open Round for this program, or nil
 #
@@ -70,5 +71,7 @@ class Program < ActiveRecord::Base
     pi.perform_import
     @last_import_results = pi.message_log.join("\n")
   end
+
+
 
 end

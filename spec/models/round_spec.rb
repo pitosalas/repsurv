@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'awesome_print'
 
 require_relative '../support/spec_test_data_factories'
 include SpecTestDataFactories

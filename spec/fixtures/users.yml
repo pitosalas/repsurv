@@ -3,6 +3,7 @@ user_<%= n%>:
   id: <%= n%>
   email: "dummy<%= n%>@gmail.com"
   name: "I M Dummy <%= n%>"
+  roles_mask: 4
 <% end %>
 
 <% 11.upto(12) do |t| %>
@@ -10,6 +11,7 @@ teacher<%= t%>:
   id: <%= t%>
   email: teacher<%= t%>@gmail.com
   name: Teacher <%= t%>
+  roles_mask: 2
 <% end %>
 
 <% 21.upto(26) do |s| %>
@@ -17,4 +19,5 @@ student<%= s%>:
   id: <%= s%>
   email: student<%= s%>@gmail.com
   name: Student <%= s%>
+  roles_mask: 1
 <% end %>

@@ -1,0 +1,23 @@
+<hr>
+<h3>"<%= prog.name %>"</h3>
+<h5>
+	<%= round.name %>
+	<%if round.close_date != nil %>
+	, <%= round.open_date %>:<%= round.close_date %>
+	<% end %>
+ 	(<%=round.id%>) 
+ </h5>
+
+You still need to respond to <%= round.n_open_questions %> questions 
+for <%= round.name %><br/>
+
+Of <%= prog.total_participants %> total participants, 
+<%= round.n_completed %> have completed this round, 
+and <%= round.n_not_completed %> have not yet. <br/>
+
+<%if round.close_date != nil %>
+	There are <%= (round.close_date - Date.today).distance_of_time_in_words %> left for this round<br/>
+<% end %>	
+<p>
+	<%=button_to('Go To Survey', round.survey_url, class: "btn btn-large btn-primary") %>
+</p>

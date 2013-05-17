@@ -1,71 +1,83 @@
 class ToDoList
 	include Enumerable
 
-	ToDoListRow = Value.new(:program_name, 
-													:survey_url, 
-													:round_name, 
-													:round_identifier, 
-													:open_questions,
-													:total_participants,
-													:completed_round,
-													:not_completed_yet,
-													:round_open,
-													:round_close,
-													:days_to_go)
+	ProgRowInfo = Value.new(:name, 
+													:id,
+													:opened,
+													:closed,
+													:open_rounds,
+													:total_participants)
+	RoundRowInfo = Value.new(:name, 
+													:id, 
+													:opened,
+													:closed,
+													:n_open_questions,
+													:n_completed,
+													:n_not_completed,
+													:days_to_go,
+													:survey_url)
 
-	def initialize(user)
+	def initialize user
+		@to_do_list = []
 		@user = user
-		generate_todolist
+	end
+
+	def create_todolist
+		progs = @user.relevant_programs
+		@to_do_list = progs.map { |prog| create_todo_list_row(prog) } unless progs.nil?
+	end
+
+	def create_todo_list_row prog
+		total_participants = prog.participants.count
+		total_questions = prog.questions.count
+		round = prog.current_round
+		part = @user.participant_in prog
+
+		pri = ProgRowInfo.with(
+			name: prog.name,
+			id: prog.id,
+			opened: prog.opened,
+			closed: prog.closed,
+			open_rounds: prog.open_rounds,
+			total_participants: total_participants)
+
+		if !round.nil?
+			n_resonses_by_participant = round.n_resonses_by_participant
+			n_participants_who_have_completed = 
+				n_resonses_by_participant.reduce(0) { |memo, obj| obj[1] == total_questions ? memo + 1 : memo }
+
+			if !part.nil?
+				n_responses_this_participant = n_resonses_by_participant[part.id] || 0
+				n_open_questions_this_participant = total_questions - n_responses_this_participant
+			end
+
+			rri = RoundRowInfo.with(
+				name: round.row_label,
+				id: round.id,
+				opened: round.opened,
+				closed: round.closed,
+				days_to_go: 0,
+				n_open_questions: n_open_questions_this_participant,
+				n_completed: n_participants_who_have_completed,
+				n_not_completed: total_participants -  n_participants_who_have_completed,
+				survey_url: "#")
+		end
+		[pri, rri]
+	end
+
+	
+	def each &block
+		# or @to_do_list.each(&block)
+		@to_do_list.each { |member| block.call(member)}
 	end
 
 	def user_name
 		@user.name
 	end
 
-	def generate_todolist
-		progs = @user.participating_programs
-		@to_do_list = progs.map { |prog| build_todolist_row(prog) }
-		@to_do_list.compact!
-	end
-
-	# return nil if analysis yields no todolist row. compact! above removes the nil.
-	def build_todolist_row prog
-		rounds = prog.open_rounds
-		raise "more than one round open in ToDoList" if rounds.length > 1
-		return nil if rounds.length == 0
-		round = rounds[0]
-		raise "mismatch program id in ToDoList#build_todolist_row" if round.program != prog
-
-		part = @user.participant_in prog
-		raise "ToDoList#build_todolist_row error" if part.nil?
-
-
-		total_questions = prog.questions.count
-		total_participants = prog.participants.count
-		response_count_by_participant = round.response_count_by_participant
-		responses = response_count_by_participant[part.id] || 0
-		missing_responses = total_questions - responses
-		participants_who_have_completed = 
-			response_count_by_participant.reduce(0) { |memo, obj| obj[1] == total_questions ? memo + 1 : memo }
-
-
-		return ToDoListRow.with(program_name: prog.name, 
-														round_name: round.row_label,
-														round_open: round.open_date,
-														round_close: round.close_date,
-
-														open_questions: missing_responses,
-														round_identifier: round.id,
-														total_participants: total_participants,
-														completed_round: participants_who_have_completed,
-														not_completed_yet: total_participants -  participants_who_have_completed,
-														survey_url: "#")
-	end
-
-
-	def each &block
-		# or @to_do_list.each(&block)
-		@to_do_list.each { |member| block.call(member)}
+	def view_path
+		fail("ToDoList#view_path encountered user without a role") if @user.nil? || @user.roles == [] 
+		@user.roles.first.to_s + "_index"
 	end
 
 end

@@ -1,5 +1,6 @@
 class Round < ActiveRecord::Base
-  attr_accessible :number, :start, :fin, :status, :open, :id, :program_id
+  attr_accessible :number, :start, :fin, :opened, :closed,
+                  :status, :open, :id, :program_id
   has_many :responses
   belongs_to :program
 
@@ -32,7 +33,7 @@ class Round < ActiveRecord::Base
     program.questions - responses_given(a_participant).map(&:question)
   end
 
-  def response_count_by_participant
+  def n_resonses_by_participant
     responses.group(:participant_id).count
   end
 end

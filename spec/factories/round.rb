@@ -3,5 +3,6 @@
 FactoryGirl.define do
   factory :round do
     number	99
+    open false
   end
 end

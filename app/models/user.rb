@@ -57,4 +57,16 @@ class User < ActiveRecord::Base
     raise "user#participant_in_program error" if result.length > 1
     result.first
   end
+
+  def relevant_programs
+    if has_role? :admin
+      Program.all
+    elsif has_role? :moderator
+      moderated_programs
+    elsif has_role? :participant
+      participating_programs
+    elsif has_role? :public
+      []
+    end
+  end
 end

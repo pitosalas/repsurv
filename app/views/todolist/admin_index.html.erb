@@ -1,0 +1,20 @@
+<div class="row">
+	<div class="span12">
+		<h2>Admin Console for <%= @todolist.user_name %> </h2>
+		<h4>Currently open programs</h3>
+	</div>
+</div>
+<% if @todolist.count > 0%>
+	<div class="row">
+		<div class="offset1 span5">
+			<% @todolist.each do |todo_item| %>
+				<%= render(partial: "admin_todo_item", 
+					locals: { prog: todo_item[0], round: todo_item[1]}) %>
+			<% end %>
+		</div>
+	</div>
+<% else %>
+	<h3>You don't have any programs (yet!)</h3>
+<% end %>
+
+

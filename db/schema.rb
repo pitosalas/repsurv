@@ -26,8 +26,10 @@ ActiveRecord::Schema.define(:version => 20121128203001) do
     t.string   "name"
     t.integer  "moderator_id"
     t.string   "description"
-    t.boolean  "open"
-    t.boolean  "locked"
+    t.datetime "opened"
+    t.datetime "closed"
+    t.boolean  "open",                         :default => true
+    t.boolean  "locked",                       :default => false
     t.boolean  "suppress_hidden_participants", :default => false
     t.datetime "created_at",                                      :null => false
     t.datetime "updated_at",                                      :null => false
@@ -59,11 +61,11 @@ ActiveRecord::Schema.define(:version => 20121128203001) do
     t.integer  "start"
     t.integer  "fin"
     t.text     "status"
-    t.boolean  "open"
-    t.datetime "open_date"
-    t.datetime "close_date"
-    t.datetime "created_at", :null => false
-    t.datetime "updated_at", :null => false
+    t.boolean  "open",       :default => true
+    t.datetime "opened"
+    t.datetime "closed"
+    t.datetime "created_at",                   :null => false
+    t.datetime "updated_at",                   :null => false
   end
 
   create_table "users", :force => true do |t|

@@ -1,6 +1,13 @@
 require 'spec_helper'
 
-describe Response do
+describe "From file: #{__FILE__}" do
+  fixtures :programs
+  fixtures :users
+  fixtures :participants
+  fixtures :rounds
+  fixtures :questions
+  fixtures :responses
+
   it "prepares for a survey" do
     prog = Program.find(1)
     part = Participant.find(1)
@@ -21,9 +28,9 @@ describe Response do
     it {Response.param_parse("RQ12").should be_nil }
   end
 
-  context "Value.lookup" do
+  context "Response#lookup" do
     it {Response.lookup(20,20,20,20).should be_nil }
-    it { Response.lookup(1,1,1,1).value.should eq "1"}
+    it {Response.lookup(1,1,1,1).value.should eq "1"}
   end
 end
  

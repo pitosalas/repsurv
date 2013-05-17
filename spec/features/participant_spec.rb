@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "Logged in user" do
   before (:each) do
-    u = create(:user, name: "sir abc", email: "abc@gmail.com", password: "abcdef", roles: "moderator")
+    u = create(:user, name: "sir abc", email: "abc@gmail.com", password: "abcdef", roles: [ :moderator ])
     prog = create(:program, name: "program", moderator: u)
     create(:participant, hidden: false, program: prog, user: u)
     visit programs_url
@@ -13,12 +13,7 @@ describe "Logged in user" do
   end
 
   describe "Sees program list" do
-    it { page.should have_content "program" }
-    it "Has clickable program" do 
-        click_link "program"
-        click_link "Participants"
-        page.should have_content "sir abc"
-    end
+    it { page.should have_content "Moderator Console" }
   end
 end
 

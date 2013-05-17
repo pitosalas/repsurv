@@ -4,8 +4,10 @@ class CreatePrograms < ActiveRecord::Migration
       t.string :name
       t.integer :moderator_id     # user_id of moderator of this program
       t.string :description
-      t.boolean :open
-      t.boolean :locked
+      t.datetime :opened
+      t.datetime :closed
+      t.boolean :open, default: true
+      t.boolean :locked, default: false
       t.boolean :suppress_hidden_participants, default: false
       t.timestamps
     end

@@ -1,0 +1,3 @@
+<% unless beg.nil? %>
+	(<%= beg.strftime("%B %e, %y") %> to <%= fin.strftime("%B %e, %y")%>)
+<% end %>

@@ -1,0 +1,30 @@
+<hr>
+<h4>"<%= prog.name %>"</h4>
+<h5><%= render( partial: "shared/date_range", 
+				locals: {beg: prog.opened, fin: prog.closed}) %>
+</h5>
+</h4>
+	Moderator: cc<br/>
+	Number of questions: nn<br/>
+	Number of participants: nn<br/>
+	Number of rounds: nn<br/><br/>
+<%if !round.nil?%>
+	Current Round: "<%= round.name %>"
+		<%= render( partial: "shared/date_range", 
+					locals: {beg: round.opened, fin: round.closed})%>
+		<br/>
+	Respondents:
+	<ul><li>who have started: bb</li><li>
+	Respondents who have yet to start: bb</li><li>
+	Respondentcs who are done: bb</li></ul>
+	<%if round.closed != nil %>
+		There are <%= distance_of_time_in_words(round.closed, Time.zone.now) %> left for this round<br/>
+	<% end %>
+	<p>
+		<%=button_to('Go To Survey', round.survey_url, class: "btn btn-large btn-primary") %>
+	</p>
+<% else %>
+There's no round open in this program.
+<% end %>
+
+

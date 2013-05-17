@@ -11,6 +11,8 @@ require 'spec_helper'
 #   end
 # end
 describe ParticipantsHelper do
+	fixtures :programs
+	fixtures :participants
   it "generates correct survey link when there are no rounds" do
 
 # I know that in the fixtures, Program two has no rounds, so no active survey

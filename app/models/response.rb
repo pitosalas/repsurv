@@ -72,6 +72,4 @@ private
     responses[0]
   end
 
-
-
 end
