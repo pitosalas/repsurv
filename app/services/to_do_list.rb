@@ -5,15 +5,19 @@ class ToDoList
 													:id,
 													:opened,
 													:closed,
-													:open_rounds,
-													:total_participants)
+													:n_questions,
+													:n_participants,
+													:n_rounds,
+													:moderator)
 	RoundRowInfo = Value.new(:name, 
 													:id, 
 													:opened,
 													:closed,
 													:n_open_questions,
 													:n_completed,
+													:n_have_started,
 													:n_not_completed,
+													:n_not_yet_started,
 													:days_to_go,
 													:survey_url)
 
@@ -36,16 +40,18 @@ class ToDoList
 		pri = ProgRowInfo.with(
 			name: prog.name,
 			id: prog.id,
+			moderator: prog.moderator.name,
 			opened: prog.opened,
 			closed: prog.closed,
-			open_rounds: prog.open_rounds,
-			total_participants: total_participants)
+			n_rounds: prog.rounds.count,
+			n_questions: total_questions,
+			n_participants: total_participants)
 
 		if !round.nil?
 			n_resonses_by_participant = round.n_resonses_by_participant
 			n_participants_who_have_completed = 
 				n_resonses_by_participant.reduce(0) { |memo, obj| obj[1] == total_questions ? memo + 1 : memo }
-
+			n_participants_who_have_started = n_resonses_by_participant.count			
 			if !part.nil?
 				n_responses_this_participant = n_resonses_by_participant[part.id] || 0
 				n_open_questions_this_participant = total_questions - n_responses_this_participant
@@ -59,7 +65,9 @@ class ToDoList
 				days_to_go: 0,
 				n_open_questions: n_open_questions_this_participant,
 				n_completed: n_participants_who_have_completed,
+				n_have_started: n_participants_who_have_started,
 				n_not_completed: total_participants -  n_participants_who_have_completed,
+				n_not_yet_started: total_participants - n_participants_who_have_completed - n_participants_who_have_started,
 				survey_url: "#")
 		end
 		[pri, rri]

@@ -1,4 +1,3 @@
-Participant.create(:id => 71, :program_id => 6, :user_id => 58, :guid => "7124f0587ac37642c0eac6", :hidden => false)
 Participant.create(:id => 72, :program_id => 6, :user_id => 59, :guid => "72df4928c98cbb8bee448f", :hidden => false)
 Participant.create(:id => 73, :program_id => 6, :user_id => 60, :guid => "73e69d97c9e7d8078ae9b8", :hidden => false)
 Participant.create(:id => 74, :program_id => 6, :user_id => 61, :guid => "7445c344744f609162a8c4", :hidden => false)
@@ -9,4 +8,3 @@ Participant.create(:id => 78, :program_id => 4, :user_id => 65, :guid => "78c4b5
 Participant.create(:id => 79, :program_id => 4, :user_id => 66, :guid => "79d563b04e2d49779d7c0f", :hidden => false)
 Participant.create(:id => 80, :program_id => 4, :user_id => 67, :guid => "8044e87fa4fc1c4ab1dc51", :hidden => false)
 Participant.create(:id => 81, :program_id => 4, :user_id => 68, :guid => "81fcc96d141d986b8037be", :hidden => false)
-Participant.create(:id => 82, :program_id => 4, :user_id => 69, :guid => "823d2c733081e841ab0b87", :hidden => false)

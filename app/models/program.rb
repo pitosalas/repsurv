@@ -1,7 +1,7 @@
 class Program < ActiveRecord::Base
   attr_accessible :name, :description, :open, 
                   :locked, :suppress_hidden_participants, 
-                  :moderator, :id, :opened, :closed
+                  :moderator, :id, :opened, :closed, :moderator_id
 
   attr_accessor :last_import_results
   has_many :questions
