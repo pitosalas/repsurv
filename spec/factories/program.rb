@@ -4,5 +4,6 @@ FactoryGirl.define do
     description "Factory program"
     open true
     locked false
+    association :moderator, factory: :moderator_user
   end
 end

@@ -1,10 +1,12 @@
 require_relative '../spec_helper'
 
 describe "ProgramServices" do
-  let(:p1) { FactoryGirl.create(:program) }
-  let(:p2) { FactoryGirl.create(:program) }
-  let(:s1) { ProgramServices.new(p1)}
-  let(:s2) { ProgramServices.new(p2)}
+  before (:each) do
+    @p1 = FactoryGirl.create(:program)
+    @p2 = FactoryGirl.create(:program)
+  end
+  let(:s1) { ProgramServices.new(@p1)}
+  let(:s2) { ProgramServices.new(@p2)}
 
   it "adds a participant with valid parameters" do
     expect {

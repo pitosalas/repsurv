@@ -5,6 +5,7 @@ describe ToDoList do
   before do
     @u_nothing_to_do = create(:user)
     @u_three_programs_to_do = create(:user, roles: [:participant])
+    @u_moderator = create(:user, roles: [:moderator])
 
     @progs = create_programs(4)
 
@@ -30,7 +31,7 @@ describe ToDoList do
   end
 
   def create_programs count
-    Array.new(count) { create(:program ) }
+    Array.new(count) { create(:program) }
   end
 
 
