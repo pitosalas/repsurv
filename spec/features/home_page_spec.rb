@@ -1,5 +1,5 @@
 require 'spec_helper'
-describe "Non-logged in home page" do
+describe "Non-logged in home page " do
   it "displays home page at root" do
     visit root_url
     page.should have_content "Repeat Survey"
@@ -8,7 +8,7 @@ end
 
 describe "Logged in home page" do
   before(:each) do
-    create(:user, name: "sir abc", email: "abc@gmail.com", password: "abcdef", roles: "moderator")
+    create(:user, name: "sir abc", email: "abc@gmail.com", password: "abcdef", roles: "participant")
     visit root_url
     click_link "Login"
     fill_in "user_email", with: "abc@gmail.com"
@@ -17,16 +17,9 @@ describe "Logged in home page" do
   end
   it "returns to root when clicking on home link" do
     visit programs_url
-    click_link "Create a new Program"
+    click_link "Users"
     click_link "Repeat Survey"
-    page.should have_content "Welcome"
+    page.should have_content "To Do List"
   end
 
-  it "returns to root when clicking on App Survey Logo link" do
-    visit programs_url
-    click_link "Create a new Program"
-    page.should have_content "Repeat"
-    click_link "Repeat"
-    page.should have_content "Welcome"
-  end
 end

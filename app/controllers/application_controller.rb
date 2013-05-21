@@ -7,7 +7,13 @@ class ApplicationController < ActionController::Base
 
  	def after_sign_in_path_for(user)
 		user_todolist_index_path(user)
-	end 
+	end
+
+	def authenticate_user!
+		unless user_signed_in?
+			redirect_to root_path
+		end
+	end
 
 end
 

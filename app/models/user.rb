@@ -24,7 +24,6 @@ class User < ActiveRecord::Base
   before_save :default_values
 
   def default_values
-    self.roles ||= :participant
   end
 
   # get role as a string.

@@ -1,6 +1,8 @@
 require 'will_paginate/array'
 
 class UsersController < ApplicationController
+    before_filter :authenticate_user!
+
 
   def index
     unless current_user.nil? 
@@ -14,17 +16,18 @@ class UsersController < ApplicationController
     authorize! :show, @user
   end
 
-  def new
-    @user = User.new
-  end
+  # def new
+  #   @user = User.new
+  #   @user.roles = [ :participant ]
+  # end
 
-  def create
-    if @user.save
-      redirect_to action: "index", notice: 'User was successfully created.'
-    else
-      render action: "new"
-    end
-  end
+  # def create
+  #   if @user.save
+  #     redirect_to action: "index", notice: 'User was successfully created.'
+  #   else
+  #     render action: "new"
+  #   end
+  # end
 
   def edit
     @user = User.find(params[:id])

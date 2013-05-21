@@ -1,8 +1,6 @@
 RepSurv::Application.routes.draw do
 
-  get "todolist/index"
-
-  root to: 'programs#index'
+  root to: 'todolist#not_signed_in'
 
   devise_for :users, path_prefix: 'devise'
   resources :users do
