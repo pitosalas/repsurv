@@ -28,10 +28,12 @@ class ToDoList
 
 	def create_todolist
 		progs = @user.relevant_programs
+    puts "---> create_todolist: #{progs.inspect}"
 		@to_do_list = progs.map { |prog| create_todo_list_row(prog) } unless progs.nil? || progs.empty?
 	end
 
 	def create_todo_list_row prog
+    puts "---> create_todolist_row: #{prog.inspect}"
 		total_participants = prog.participants.count
 		total_questions = prog.questions.count
 		round = prog.current_round
