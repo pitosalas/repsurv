@@ -28,7 +28,7 @@ class ToDoList
 
 	def create_todolist
 		progs = @user.relevant_programs
-		@to_do_list = progs.map { |prog| create_todo_list_row(prog) } unless progs.nil?
+		@to_do_list = progs.map { |prog| create_todo_list_row(prog) } unless progs.nil? || progs.empty?
 	end
 
 	def create_todo_list_row prog
