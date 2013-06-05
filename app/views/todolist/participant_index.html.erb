@@ -1,7 +1,7 @@
 <h2>To Do List for <%= @todolist.user_name %> </h2>
 <% if @todolist.count > 0%>
 	<% @todolist.each do |todo_item| %>
-		<%= render(partial: "todo_item", locals: { prog: todo_item[0], round: todo_item[1]}) %>
+		<%= render(partial: "participant_todo_item", locals: { prog: todo_item[0], round: todo_item[1]}) %>
 	<% end %>
 <% else %>
 	<h3>Congratulations. You are all caught up!</h3>

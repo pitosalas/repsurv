@@ -27,7 +27,9 @@ class ProgramsController < ApplicationController
   end
 
   def destroy
-    Program.find(params[:id]).destroy
+    binding.pry
+    prog = Program.find(params[:id])
+    prog.destroy
     flash[:success] = "Program has been deleted."
     redirect_to programs_path
   end
@@ -38,6 +40,7 @@ class ProgramsController < ApplicationController
 
   def create
     @program = Program.new(params[:program])
+    @program.moderator = current_user
     if @program.save
       redirect_to report_program_path(@program)
     else

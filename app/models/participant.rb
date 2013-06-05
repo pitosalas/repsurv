@@ -1,6 +1,6 @@
 class Participant < ActiveRecord::Base
   attr_accessible :program_id, :hidden, :user, :id, :user_id, :guid
-  has_many :responses
+  has_many :responses, dependent: :destroy
   belongs_to :user
   belongs_to :program
 

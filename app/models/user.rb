@@ -8,7 +8,9 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :name, :roles, :id, :encrypted_password, :sign_in_count, :roles_mask
+  attr_accessible :email, :password, :password_confirmation, :remember_me, 
+                  :name, :roles, :id, :encrypted_password, :sign_in_count, :roles_mask,
+                  :current_sign_in_at, :last_sign_in_at, :current_sign_in_ip, :last_sign_in_ip
 
   # Some basic validation that the email looks ok:
   validates :email, format: { with: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i, message: "Invalid email"}

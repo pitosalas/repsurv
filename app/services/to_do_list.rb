@@ -47,15 +47,13 @@ class ToDoList
 			n_questions: total_questions,
 			n_participants: total_participants)
 
-    puts "---> create_todolist pri: #{pri.inspect}, #{pri.opened.class}"
-
 		if !round.nil?
-			n_resonses_by_participant = round.n_resonses_by_participant
+			n_responses_by_participant = round.n_responses_by_participant
 			n_participants_who_have_completed = 
-				n_resonses_by_participant.reduce(0) { |memo, obj| obj[1] == total_questions ? memo + 1 : memo }
-			n_participants_who_have_started = n_resonses_by_participant.count			
+				n_responses_by_participant.reduce(0) { |memo, obj| obj[1] == total_questions ? memo + 1 : memo }
+			n_participants_who_have_started = n_responses_by_participant.count			
 			if !part.nil?
-				n_responses_this_participant = n_resonses_by_participant[part.id] || 0
+				n_responses_this_participant = n_responses_by_participant[part.id] || 0
 				n_open_questions_this_participant = total_questions - n_responses_this_participant
 			end
 

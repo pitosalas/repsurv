@@ -4,7 +4,13 @@
 		<%= render(partial: "moderator_todo_item", locals: { prog: todo_item[0], round: todo_item[1]}) %>
 	<% end %>
 <% else %>
-	<h3>Congratulations. You are all caught up!</h3>
+	<h3>You don't have any programs. Maybe you want to create one?</h3>
 <% end %>
+<hr/>
+<p>
+	<%= link_to('New Program', new_program_path, class: "btn btn-primary", id: "new_program_button") %>
+</p>
+
+
 
 

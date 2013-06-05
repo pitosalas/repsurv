@@ -1,10 +1,2 @@
-Program.create(id: 4, name: "Advanced Anthropology", 
-							 :description => "Summer of 2012", :open => false, 
-							 moderator_id: 69,
-							 :locked => true, :suppress_hidden_participants => false,
-							opened: "Jan 11, 2013", closed: "June 14, 2013")
-Program.create(:id => 6, :name => "Introductory Statistics", 
-							:description => "Summer of 2012", :open => false, 
-							:locked => true, :suppress_hidden_participants => false,
-							moderator_id: 58, 
-							opened: "Sept 11, 2013", closed: "December 14, 2013")
+Program.create(:id => 4, :name => "Advanced Anthropology", :moderator_id => 69, :description => "Summer of 2012", :opened => "Fri, 11 Jan 2013 00:00:00 UTC +00:00", :closed => "Fri, 14 Jun 2013 00:00:00 UTC +00:00", :open => false, :locked => true, :suppress_hidden_participants => false)
+Program.create(:id => 6, :name => "Introductory Statistics", :moderator_id => 58, :description => "Summer of 2012", :opened =>" Wed, 11 Sep 2013 00:00:00 UTC +00:00", :closed => "Sat, 14 Dec 2013 00:00:00 UTC +00:00", :open => false, :locked => true, :suppress_hidden_participants => false)

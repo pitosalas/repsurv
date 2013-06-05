@@ -2,11 +2,11 @@
   <div class="span6 offset3">
     <%= form_for(@program) do |f| %> 
 
-      <%= f.label :name %> <%= f.text_field :name %> <br/>
+      <%= f.label :name %> <%= f.text_field :name, id: "program_name" %> <br/>
       <%= f.label :description %> <%= f.text_field :description %> <br/>
       <%= f.label :open %> <%= f.check_box :open %> <br/>
       <%= f.label :locked %> <%= f.check_box :locked %> <br/>
-      <%= f.submit "Create new program", class: "btn btn-large btn-primary" %> 
+      <%= f.submit "Create new program", class: "btn btn-large btn-primary", id: "create_program" %> 
     <% end %>
   </div>
 </div>

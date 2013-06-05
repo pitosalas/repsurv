@@ -3,12 +3,11 @@
 <h5><%= render( partial: "shared/date_range", 
 				locals: {beg: prog.opened, fin: prog.closed}) %>
 </h5>
-</h4>
+Moderator: <%= prog.moderator %><br/>
+Number of questions: <%= prog.n_questions %><br/>
+Number of participants: <%= prog.n_participants %><br/>
+Number of rounds: <%= prog.n_rounds %> <br/><br/>
 <%if !round.nil?%>
-	Moderator: <%= prog.moderator %><br/>
-	Number of questions: <%= prog.n_questions %><br/>
-	Number of participants: <%= prog.n_participants %><br/>
-	Number of rounds: <%= prog.n_rounds %> <br/><br/>
 	Current Round: "<%= round.name %>"
 		<%= render( partial: "shared/date_range", 
 					locals: {beg: round.opened, fin: round.closed})%>
@@ -17,8 +16,6 @@
 	<ul><li>who have started: <%= round.n_have_started %></li><li>
 	who have yet to start: <%= round.n_not_yet_started %></li><li>
 	who are done: <%= round.n_completed %></li></ul>
-
-	<p>
-		<%=button_to('Go To Survey', round.survey_url, class: "btn btn-large btn-primary") %>
-	</p>
+<% else %>
+	<em>No Round Open Yet</em>
 <% end %>

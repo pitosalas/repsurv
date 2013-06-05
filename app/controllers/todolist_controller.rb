@@ -1,16 +1,14 @@
 class TodolistController < ApplicationController
 
   def index
-    puts "---> Signed In: #{current_user.inspect}"
   	user = User.find(params[:user_id])
   	@todolist = ToDoList.new(user)
   	@todolist.create_todolist
   	render @todolist.view_path
   end
 
-  def not_signed_in
+  def site_root
   	if user_signed_in?
-      puts "---> Not Signed In: #{current_user.inspect}"
   		@todolist = ToDoList.new(current_user)
   		@todolist.create_todolist
   		render @todolist.view_path

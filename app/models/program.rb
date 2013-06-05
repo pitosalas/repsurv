@@ -4,15 +4,14 @@ class Program < ActiveRecord::Base
                   :moderator, :id, :opened, :closed, :moderator_id
 
   attr_accessor :last_import_results
-  has_many :questions
-  has_many :settings
-  has_many :rounds
+  has_many :questions, dependent: :destroy
+  has_many :rounds, dependent: :destroy
   has_many :open_rounds, :class_name => 'Round', :conditions => { open: true }
   
-  has_many :responses
+  has_many :responses, dependent: :destroy
 
   belongs_to :moderator, class_name: User
-  has_many :participants
+  has_many :participants, dependent: :destroy
   has_many :users, through: Participant
 
   def self.participated_in_by usr

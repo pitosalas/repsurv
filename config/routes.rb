@@ -1,6 +1,6 @@
 RepSurv::Application.routes.draw do
 
-  root to: 'todolist#not_signed_in'
+  root to: 'todolist#site_root'
 
   devise_for :users, path_prefix: 'devise'
   resources :users do

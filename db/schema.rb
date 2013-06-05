@@ -61,11 +61,11 @@ ActiveRecord::Schema.define(:version => 20121128203001) do
     t.integer  "start"
     t.integer  "fin"
     t.text     "status"
-    t.boolean  "open",       :default => true
+    t.boolean  "open"
     t.datetime "opened"
     t.datetime "closed"
-    t.datetime "created_at",                   :null => false
-    t.datetime "updated_at",                   :null => false
+    t.datetime "created_at", :null => false
+    t.datetime "updated_at", :null => false
   end
 
   create_table "users", :force => true do |t|

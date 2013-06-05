@@ -33,7 +33,7 @@ class Round < ActiveRecord::Base
     program.questions - responses_given(a_participant).map(&:question)
   end
 
-  def n_resonses_by_participant
+  def n_responses_by_participant
     responses.group(:participant_id).count
   end
 end

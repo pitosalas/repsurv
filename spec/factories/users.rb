@@ -7,14 +7,14 @@ FactoryGirl.define do
     password "aaaaaa"
 
     factory :admin_user do
-    	roles [ :admin]
+    	roles [ :admin ]
     end
 
     factory :moderator_user do
-    	roles [ :modetator]
+    	roles [ :moderator ]
     end
     factory :participant_user do
-    	roles [ :participant]
+    	roles [ :participant ]
     end
 
   end

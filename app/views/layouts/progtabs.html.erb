@@ -1,5 +1,6 @@
-<% content_for :content do %>
+<% content_for :content do %>  
   <div class="container">
+  <h3 id="program_name">Program: <%= @program.name %></h3>
     <ul class="nav nav-tabs">
       <li><%= link_to "Reports", report1_path(@program) %></li>
       <li><%= link_to "Settings", edit_program_path(@program) %></li>

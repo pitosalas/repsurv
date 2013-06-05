@@ -1,4 +1,5 @@
 require 'spec_helper'
+
 describe "Non-logged in home page " do
   it "displays home page at root" do
     visit root_url
