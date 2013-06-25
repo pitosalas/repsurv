@@ -11,7 +11,7 @@ describe "From file: #{__FILE__}" do
   it "prepares for a survey" do
     prog = Program.find(1)
     part = Participant.find(1)
-    r = Round.where(open: true)
+    r = Round.where(open_status: true)
     r.size.should == 1
     round = r[0]
     vees = Response.find_or_create_round(prog, part, round)

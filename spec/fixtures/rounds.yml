@@ -3,7 +3,7 @@ round_<%= n%>:
   id: <%= n%>
   number: <%= n%>
   program_id: 1
-  open: <%= n == 4 %>
+  open_status: <%= n == 4 %>
 <% end %>
 
 <% 5.upto(9) do |n| %>
@@ -11,7 +11,7 @@ round_<%= n%>:
   id: <%= n%>
   number: <%= n%>
   program_id: 2
-  open: false
+  open_status: false
 <% end %>
 
 <% 10.upto(11) do |n| %>
@@ -19,6 +19,6 @@ round_<%= n%>:
   id: <%= n%>
   number: <%= n%>
   program_id: <%= n == 10 ? 11 : 12 %>
-  open: false
+  open_status: false
 <% end %>
 

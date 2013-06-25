@@ -34,7 +34,7 @@ module SpecTestDataFactories
   end
 
   def create_rounds prog, count
-  	Array.new(count) { create(:round, program: prog, open: false)}
+  	Array.new(count) { create(:round, program: prog, open_status: false)}
   end
 
   def create_questions prog, count

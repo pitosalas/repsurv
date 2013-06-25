@@ -26,7 +26,7 @@ describe ToDoList do
   def create_rounds count, program
     res = []
     count.times { res << create(:round, program: program)}
-    res[0].open = true
+    res[0].open
     res[0].save!
   end
 

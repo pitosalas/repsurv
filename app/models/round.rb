@@ -1,6 +1,6 @@
 class Round < ActiveRecord::Base
   attr_accessible :number, :start, :fin, :opened, :closed,
-                  :status, :open, :id, :program_id
+                  :status, :id, :program_id
   has_many :responses
   belongs_to :program
 
@@ -36,4 +36,27 @@ class Round < ActiveRecord::Base
   def n_responses_by_participant
     responses.group(:participant_id).count
   end
+
+  def open date=nil
+    Round.transaction do
+      other_open_rounds = program.rounds.where(open_status: true)
+      raise RuntimeError, "Attempt to have more than one Round open" if other_open_rounds.length >= 1
+      self.open_status = true
+      self.opened = date || DateTime.now
+      save
+    end
+  end
+
+  def open?
+    open_status
+  end
+
+  def close date=nil
+    Round.transaction do
+      self.open_status = false
+      self.closed = date || DateTime.now
+      save
+    end
+  end
+
 end

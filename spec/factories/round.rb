@@ -3,6 +3,7 @@
 FactoryGirl.define do
   factory :round do
     number	99
-    open false
+    open_status false
+    program
   end
 end

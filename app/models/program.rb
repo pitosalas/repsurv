@@ -25,9 +25,24 @@ class Program < ActiveRecord::Base
 # return the currently open Round for this program, or nil
 #
   def current_round
-    open_rounds = rounds.where(open: true)
+    open_rounds = rounds.where(open_status: true)
     raise "More than one Round open" unless open_rounds.size <= 1
-    open_rounds[0]
+    if (open_rounds.length == 1) 
+      open_rounds[0]
+    else
+      nil
+    end
+  end
+
+  def close_round(round, date=nil)
+    round.close date
+  end
+
+  def open_round(round, date=nil)
+    if (cr = current_round)
+      cr.close date
+    end
+    round.open date
   end
 
   def highest_question
